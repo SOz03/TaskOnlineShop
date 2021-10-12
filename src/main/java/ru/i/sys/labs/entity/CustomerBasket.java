@@ -1,15 +1,20 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "customer_baskets")
 public class CustomerBasket {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Customer customer;
 
-    public CustomerBasket() { }
+    public CustomerBasket() {
+    }
 
     public CustomerBasket(Customer customer) {
         this.id = UUID.randomUUID();

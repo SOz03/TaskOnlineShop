@@ -1,26 +1,42 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "price")
     private BigDecimal price;
-    private Date productionDate ;
-    private String Description;
+
+    @Column(name = "production_date")
+    private Date productionDate;
+
+    @Column(name = "description")
+    private String description;
+
+    public Product() {
+    }
 
     public Product(String name, BigDecimal price,
-                         Date productionDate, String description) {
+                   Date productionDate, String description) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;
         this.productionDate = productionDate;
-        Description = description;
+        this.description = description;
     }
 
     public UUID getId() {
@@ -56,11 +72,11 @@ public class Product {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     @Override
@@ -95,7 +111,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", productionDate=" + productionDate +
-                ", Description='" + Description + '\'' +
+                ", Description='" + description + '\'' +
                 '}';
     }
 }

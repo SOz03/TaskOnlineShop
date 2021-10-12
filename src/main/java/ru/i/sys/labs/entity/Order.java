@@ -1,16 +1,24 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "orders")
 public class Order {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Delivery delivery;
+
+    @Column(name = "cost")
     private BigDecimal cost;
+
+    @Column(name = "date")
     private Date date;
 
     public Order() {}

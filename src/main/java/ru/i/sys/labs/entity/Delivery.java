@@ -2,15 +2,28 @@ package ru.i.sys.labs.entity;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "delivery")
 public class Delivery {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "cost")
     private BigDecimal cost;
+
+    @Column(name = "time_delivery")
     private Date timeDelivery;
 
     public Delivery() {}

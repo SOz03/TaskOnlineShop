@@ -1,19 +1,33 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "customers")
 public class Customer {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+
+    @Column(name = "FIO")
     private String FIO;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "date_birth")
     private Date dateBirth;
+
+    @Column(name = "address")
     private String address;
 
-    public Customer(){}
+    public Customer() {
+    }
 
     public Customer(String FIO, String phoneNumber,
                     Date dateBirth, String address) {

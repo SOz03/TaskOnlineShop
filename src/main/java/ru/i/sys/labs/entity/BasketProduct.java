@@ -1,18 +1,29 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.util.UUID;
 
-@Component
+@Entity
+@Table(name = "baskets_products")
 public class BasketProduct {
+    @Id
+    @Column(name = "id", unique = true, nullable = false)
     private UUID id;
-    private Product product;
-    private CustomerBasket customerBasket;
+
+    @Column(name = "count_product")
     private Integer countProduct;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private CustomerBasket customerBasket;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Order order;
 
-    public BasketProduct() {}
+    public BasketProduct() {
+    }
 
     public BasketProduct(Product product, CustomerBasket customerBasket,
                          Integer countProduct, Order order) {
