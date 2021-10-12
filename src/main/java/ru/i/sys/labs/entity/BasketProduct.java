@@ -14,12 +14,15 @@ public class BasketProduct {
     private Integer countProduct;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Column(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Column(name = "customer_baskets_id")
     private CustomerBasket customerBasket;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Column(name = "orders_id")
     private Order order;
 
     public BasketProduct() {

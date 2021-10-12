@@ -11,6 +11,7 @@ public class CustomerBasket {
     private UUID id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Column(name = "customers_id")
     private Customer customer;
 
     public CustomerBasket() {
