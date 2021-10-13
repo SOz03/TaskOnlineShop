@@ -13,7 +13,7 @@ public class Order {
     private UUID id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Column(name = "delivery_id")
+    @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
     @Column(name = "cost")
