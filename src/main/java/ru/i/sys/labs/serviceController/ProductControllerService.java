@@ -32,14 +32,14 @@ public class ProductControllerService {
     public ResponseEntity<Product> getProductById(UUID id) throws ResourceNotFoundException {
         Product product = productRepositoryDAO
                 .findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Нет данных о продукте с id= " + id));
         return ResponseEntity.ok().body(product);
     }
 
     public ResponseEntity<Product> updateProduct(UUID id, Product productUpdate) throws ResourceNotFoundException {
         Product product = productRepositoryDAO
                 .findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Нет данных о продукте с id= " + id));
         product.setName(productUpdate.getName());
         product.setPrice(productUpdate.getPrice());
         product.setProductionDate(productUpdate.getProductionDate());
@@ -49,7 +49,7 @@ public class ProductControllerService {
     }
 
     public ResponseEntity<Product> deleteProduct(UUID id) throws ResourceNotFoundException {
-        productRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
+        productRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Нет данных о продукте с id= " + id));
         productRepositoryDAO.deleteById(id);
         return ResponseEntity.ok().build();
     }
