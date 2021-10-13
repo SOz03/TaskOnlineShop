@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
-import ru.i.sys.labs.repository.ProductRepository;
+import ru.i.sys.labs.serviceDAO.ProductRepositoryDAO;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,27 +15,27 @@ import java.util.UUID;
 @RequestMapping()
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductRepositoryDAO productRepositoryDAO;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductRepositoryDAO productRepositoryDAO) {
+        this.productRepositoryDAO = productRepositoryDAO;
     }
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productRepositoryDAO.findAll();
     }
 
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        productRepository.save(product);
+        productRepositoryDAO.save(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        Product product = productRepository
+        Product product = productRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
         return ResponseEntity.ok().body(product);
@@ -44,21 +44,21 @@ public class ProductController {
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") UUID id,
                                                  @RequestBody Product productUpdate) throws ResourceNotFoundException {
-        Product product = productRepository
+        Product product = productRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
         product.setName(productUpdate.getName());
         product.setPrice(productUpdate.getPrice());
         product.setProductionDate(productUpdate.getProductionDate());
         product.setDescription(productUpdate.getDescription());
-        productRepository.save(product);
+        productRepositoryDAO.save(product);
         return ResponseEntity.ok().body(product);
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Product>  deleteProduct(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException{
-        productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
-        productRepository.deleteById(id);
+        productRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Не найден" + id));
+        productRepositoryDAO.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
