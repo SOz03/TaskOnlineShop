@@ -28,11 +28,13 @@ public class ProductService {
     }
 
     public void createProduct(Product product) {
-        log.info("create product");
+        log.info("starting product creation");
         productRepositoryDAO.save(product);
+        log.info("finished product creation");
     }
 
     public Product getProductById(UUID id) throws ResourceNotFoundException {
+        log.info("get product");
         return findByID(id);
     }
 
@@ -48,9 +50,10 @@ public class ProductService {
     }
 
     public void deleteProduct(UUID id) throws ResourceNotFoundException {
-        log.info("delete product by id");
+        log.info("starting delete product by id");
         findByID(id);
         productRepositoryDAO.deleteById(id);
+        log.info("finished delete product by id");
     }
 
     private Product findByID(UUID id) throws ResourceNotFoundException {
@@ -58,8 +61,8 @@ public class ProductService {
         return productRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> {
-                    log.warn("No product data {}", id);
-                    return new ResourceNotFoundException("Нет данных о продукте с id= " + id);
+                    log.warn("product with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о продукте с id = " + id);
                 });
     }
 

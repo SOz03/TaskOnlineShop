@@ -14,6 +14,7 @@ import java.util.UUID;
 @Service
 public class ProductRepositoryDAO {
 
+    private final Logger log = LoggerFactory.getLogger(ProductRepositoryDAO.class);
     private final ProductRepository productRepository;
 
     @Autowired
@@ -22,18 +23,24 @@ public class ProductRepositoryDAO {
     }
 
     public List<Product> findAll() {
+        log.info("executing a database query 'findAll'");
         return productRepository.findAll();
     }
 
     public void save(Product product) {
+        log.info("executing a database query 'save'");
         productRepository.save(product);
+        log.info("data received");
     }
 
     public Optional<Product> findById(UUID id) {
+        log.info("executing a database query 'findById'");
         return productRepository.findById(id);
     }
 
     public void deleteById(UUID id) {
+        log.info("executing a database query 'deleteById'");
         productRepository.deleteById(id);
+        log.info("data received");
     }
 }

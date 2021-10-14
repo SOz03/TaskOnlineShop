@@ -7,7 +7,6 @@
 
     <logger name = "ru.i.sys.labs.service" level = "info" />
     <logger name = "ru.i.sys.labs.serviceDAO" level = "info" />
-    <logger name = "ru.i.sys.labs.exception" level = "info" />
     <logger name = "ru.i.sys.labs.repository" level = "info" />
 
     <root level="debug">
