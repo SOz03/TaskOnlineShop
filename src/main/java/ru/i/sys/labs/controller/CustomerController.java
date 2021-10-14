@@ -5,44 +5,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.Customer;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
-import ru.i.sys.labs.serviceController.CustomerControllerService;
+import ru.i.sys.labs.service.CustomerService;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/shop/entities")
+@RequestMapping("/shop/entities/customers")
 public class CustomerController {
 
-    private final CustomerControllerService customerControllerService;
+    private final CustomerService customerControllerService;
 
     @Autowired
-    public CustomerController(CustomerControllerService customerControllerService) {
+    public CustomerController(CustomerService customerControllerService) {
         this.customerControllerService = customerControllerService;
     }
 
-    @GetMapping("/customers")
+    @GetMapping("")
     public List<Customer> getAllCustomers() {
         return customerControllerService.getAllCustomers();
     }
 
-    @PostMapping("/customers")
+    @PostMapping("")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         return customerControllerService.createCustomer(customer);
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         return customerControllerService.getCustomerById(id);
     }
 
-    @PutMapping("/customers/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") UUID id,
                                                    @RequestBody Customer customerUpdate) throws ResourceNotFoundException {
         return customerControllerService.updateCustomer(id, customerUpdate);
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Customer> deleteCustomer(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         return customerControllerService.deleteCustomer(id);
     }

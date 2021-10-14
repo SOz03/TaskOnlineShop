@@ -1,4 +1,4 @@
-package ru.i.sys.labs.serviceController;
+package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class OrderControllerService {
+public class OrderService {
     private final OrderRepositoryDAO orderRepositoryDAO;
 
     @Autowired
-    public OrderControllerService(OrderRepositoryDAO orderRepositoryDAO) {
+    public OrderService(OrderRepositoryDAO orderRepositoryDAO) {
         this.orderRepositoryDAO = orderRepositoryDAO;
     }
 

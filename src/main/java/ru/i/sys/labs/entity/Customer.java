@@ -14,7 +14,7 @@ public class Customer {
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
 
-    @Column(name = "FIO")
+    @Column(name = "first_name")
     private String FIO;
 
     @Column(name = "phone_number")

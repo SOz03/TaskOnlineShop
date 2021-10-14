@@ -5,43 +5,43 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
-import ru.i.sys.labs.serviceController.OrderControllerService;
+import ru.i.sys.labs.service.OrderService;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/shop/entities")
+@RequestMapping("/shop/entities/orders")
 public class OrderController {
-    private final OrderControllerService orderControllerService;
+    private final OrderService orderControllerService;
 
     @Autowired
-    public OrderController(OrderControllerService orderControllerService) {
+    public OrderController(OrderService orderControllerService) {
         this.orderControllerService = orderControllerService;
     }
 
-    @GetMapping("/orders")
+    @GetMapping("")
     public List<Order> getAllOrders() {
         return orderControllerService.getAllOrders();
     }
 
-    @PostMapping("/orders")
+    @PostMapping("")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         return orderControllerService.createOrder(order);
     }
 
-    @GetMapping("/orders/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         return orderControllerService.getOrderById(id);
     }
 
-    @PutMapping("/orders/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") UUID id,
                                              @RequestBody Order orderUpdate) throws ResourceNotFoundException {
         return orderControllerService.updateOrder(id, orderUpdate);
     }
 
-    @DeleteMapping("/orders/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Order> deleteOrder(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         return orderControllerService.deleteOrder(id);
     }

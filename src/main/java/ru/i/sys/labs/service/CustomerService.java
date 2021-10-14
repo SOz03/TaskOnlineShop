@@ -1,4 +1,4 @@
-package ru.i.sys.labs.serviceController;
+package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class CustomerControllerService {
+public class CustomerService {
     private final CustomerRepositoryDAO customerRepositoryDAO;
 
     @Autowired
-    public CustomerControllerService(CustomerRepositoryDAO customerRepositoryDAO) {
+    public CustomerService(CustomerRepositoryDAO customerRepositoryDAO) {
         this.customerRepositoryDAO = customerRepositoryDAO;
     }
 
