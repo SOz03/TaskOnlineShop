@@ -9,6 +9,7 @@ public class ResourceNotFoundException extends Exception {
     static final long serialVersionUID = 3L;
 
     public ResourceNotFoundException(String error) {
+
         super(error);
     }
 }

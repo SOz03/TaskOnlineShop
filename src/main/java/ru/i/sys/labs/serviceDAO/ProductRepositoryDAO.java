@@ -1,7 +1,8 @@
 package ru.i.sys.labs.serviceDAO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.repository.ProductRepository;
@@ -16,23 +17,23 @@ public class ProductRepositoryDAO {
     private final ProductRepository productRepository;
 
     @Autowired
-    public ProductRepositoryDAO(ProductRepository productRepository){
+    public ProductRepositoryDAO(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public List<Product> findAll(){
+    public List<Product> findAll() {
         return productRepository.findAll();
     }
 
-    public void save(Product product){
+    public void save(Product product) {
         productRepository.save(product);
     }
 
-    public Optional<Product> findById(UUID id){
+    public Optional<Product> findById(UUID id) {
         return productRepository.findById(id);
     }
 
-    public void deleteById(UUID id){
+    public void deleteById(UUID id) {
         productRepository.deleteById(id);
     }
 }

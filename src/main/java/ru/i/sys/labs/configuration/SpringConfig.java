@@ -1,4 +1,4 @@
-package ru.i.sys.labs.config;
+package ru.i.sys.labs.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
