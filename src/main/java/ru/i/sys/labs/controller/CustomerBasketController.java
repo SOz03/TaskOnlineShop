@@ -1,6 +1,7 @@
 package ru.i.sys.labs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.CustomerBasket;
@@ -28,22 +29,24 @@ public class CustomerBasketController {
 
     @PostMapping("")
     public ResponseEntity<CustomerBasket> createCustomerBasket(@RequestBody CustomerBasket customerBasket) {
-        return customerBasketControllerService.createCustomerBasket(customerBasket);
+        customerBasketControllerService.createCustomerBasket(customerBasket);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerBasket> getCustomerBasketById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return customerBasketControllerService.getCustomerBasketById(id);
+        return ResponseEntity.ok().body(customerBasketControllerService.getCustomerBasketById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CustomerBasket> updateCustomerBasket(@PathVariable(value = "id") UUID id,
                                                                @RequestBody CustomerBasket customerBasketUpdate) throws ResourceNotFoundException {
-        return customerBasketControllerService.updateCustomerBasket(id, customerBasketUpdate);
+        return ResponseEntity.ok().body(customerBasketControllerService.updateCustomerBasket(id, customerBasketUpdate));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<CustomerBasket> deleteCustomerBasket(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return customerBasketControllerService.deleteCustomerBasket(id);
+        customerBasketControllerService.deleteCustomerBasket(id);
+        return ResponseEntity.ok().build();
     }
 }

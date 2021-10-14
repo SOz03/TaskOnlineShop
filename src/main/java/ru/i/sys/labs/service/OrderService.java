@@ -1,8 +1,6 @@
 package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -24,28 +22,26 @@ public class OrderService {
         return orderRepositoryDAO.findAll();
     }
 
-    public ResponseEntity<Order> createOrder(Order order) {
+    public void createOrder(Order order) {
         orderRepositoryDAO.save(order);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Order> getOrderById(UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(findByID(id));
+    public Order getOrderById(UUID id) throws ResourceNotFoundException {
+        return findByID(id);
     }
 
-    public ResponseEntity<Order> updateOrder(UUID id, Order orderUpdate) throws ResourceNotFoundException {
+    public Order updateOrder(UUID id, Order orderUpdate) throws ResourceNotFoundException {
         Order order = findByID(id);
         order.setCost(orderUpdate.getCost());
         order.setDate(orderUpdate.getDate());
         order.setDelivery(orderUpdate.getDelivery());
         orderRepositoryDAO.save(order);
-        return ResponseEntity.ok().body(order);
+        return order;
     }
 
-    public ResponseEntity<Order> deleteOrder(UUID id) throws ResourceNotFoundException {
+    public void deleteOrder(UUID id) throws ResourceNotFoundException {
         orderRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Нет данных о заказе с id= " + id));
         orderRepositoryDAO.deleteById(id);
-        return ResponseEntity.ok().build();
     }
 
     private Order findByID(UUID id) throws ResourceNotFoundException {

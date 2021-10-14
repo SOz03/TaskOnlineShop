@@ -1,10 +1,7 @@
 package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.ProductRepositoryDAO;

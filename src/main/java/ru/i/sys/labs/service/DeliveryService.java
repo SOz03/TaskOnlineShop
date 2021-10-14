@@ -1,8 +1,6 @@
 package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Delivery;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -24,28 +22,26 @@ public class DeliveryService {
         return deliveryRepositoryDAO.findAll();
     }
 
-    public ResponseEntity<Delivery> createDelivery(Delivery delivery) {
+    public void createDelivery(Delivery delivery) {
         deliveryRepositoryDAO.save(delivery);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Delivery> getDeliveryById(UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(findByID(id));
+    public Delivery getDeliveryById(UUID id) throws ResourceNotFoundException {
+        return findByID(id);
     }
 
-    public ResponseEntity<Delivery> updateDelivery(UUID id, Delivery deliveryUpdate) throws ResourceNotFoundException {
+    public Delivery updateDelivery(UUID id, Delivery deliveryUpdate) throws ResourceNotFoundException {
         Delivery delivery = findByID(id);
         delivery.setCost(deliveryUpdate.getCost());
         delivery.setName(deliveryUpdate.getName());
         delivery.setTimeDelivery(deliveryUpdate.getTimeDelivery());
         deliveryRepositoryDAO.save(delivery);
-        return ResponseEntity.ok().body(delivery);
+        return delivery;
     }
 
-    public ResponseEntity<Delivery> deleteDelivery(UUID id) throws ResourceNotFoundException {
+    public void deleteDelivery(UUID id) throws ResourceNotFoundException {
         deliveryRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Нет данных о доставке с id= " + id));
         deliveryRepositoryDAO.deleteById(id);
-        return ResponseEntity.ok().build();
     }
 
     private Delivery findByID(UUID id) throws ResourceNotFoundException {

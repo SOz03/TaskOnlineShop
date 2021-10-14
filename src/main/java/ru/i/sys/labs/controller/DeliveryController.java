@@ -1,6 +1,7 @@
 package ru.i.sys.labs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.Delivery;
@@ -27,22 +28,24 @@ public class DeliveryController {
 
     @PostMapping("")
     public ResponseEntity<Delivery> createDelivery(@RequestBody Delivery delivery) {
-        return deliveryControllerService.createDelivery(delivery);
+        deliveryControllerService.createDelivery(delivery);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Delivery> getDeliveryById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return deliveryControllerService.getDeliveryById(id);
+        return ResponseEntity.ok().body(deliveryControllerService.getDeliveryById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Delivery> updateDelivery(@PathVariable(value = "id") UUID id,
                                                    @RequestBody Delivery deliveryUpdate) throws ResourceNotFoundException {
-        return deliveryControllerService.updateDelivery(id, deliveryUpdate);
+        return ResponseEntity.ok().body(deliveryControllerService.updateDelivery(id, deliveryUpdate));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Delivery> deleteDelivery(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return deliveryControllerService.deleteDelivery(id);
+        deliveryControllerService.deleteDelivery(id);
+        return ResponseEntity.ok().build();
     }
 }

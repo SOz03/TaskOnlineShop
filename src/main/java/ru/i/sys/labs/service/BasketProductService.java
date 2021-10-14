@@ -1,8 +1,6 @@
 package ru.i.sys.labs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.BasketProduct;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -24,29 +22,27 @@ public class BasketProductService {
         return basketProductRepositoryDAO.findAll();
     }
 
-    public ResponseEntity<BasketProduct> createBasketProduct(BasketProduct basketProduct) {
+    public void createBasketProduct(BasketProduct basketProduct) {
         basketProductRepositoryDAO.save(basketProduct);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<BasketProduct> getBasketProductById(UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(findByID(id));
+    public BasketProduct getBasketProductById(UUID id) throws ResourceNotFoundException {
+        return findByID(id);
     }
 
-    public ResponseEntity<BasketProduct> updateBasketProduct(UUID id, BasketProduct basketProductUpdate) throws ResourceNotFoundException {
+    public BasketProduct updateBasketProduct(UUID id, BasketProduct basketProductUpdate) throws ResourceNotFoundException {
         BasketProduct basketProduct = findByID(id);
         basketProduct.setOrder(basketProductUpdate.getOrder());
         basketProduct.setCountProduct(basketProductUpdate.getCountProduct());
         basketProduct.setCustomerBasket(basketProductUpdate.getCustomerBasket());
         basketProduct.setProduct(basketProductUpdate.getProduct());
         basketProductRepositoryDAO.save(basketProduct);
-        return ResponseEntity.ok().body(basketProduct);
+        return basketProduct;
     }
 
-    public ResponseEntity<BasketProduct> deleteBasketProduct(UUID id) throws ResourceNotFoundException {
+    public void deleteBasketProduct(UUID id) throws ResourceNotFoundException {
         basketProductRepositoryDAO.findById(id).orElseThrow(() -> new ResourceNotFoundException("Нет данных о продуктах в корзине с id= " + id));
         basketProductRepositoryDAO.deleteById(id);
-        return ResponseEntity.ok().build();
     }
 
     private BasketProduct findByID(UUID id) throws ResourceNotFoundException {

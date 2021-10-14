@@ -1,6 +1,7 @@
 package ru.i.sys.labs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.i.sys.labs.entity.Order;
@@ -27,22 +28,24 @@ public class OrderController {
 
     @PostMapping("")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        return orderControllerService.createOrder(order);
+        orderControllerService.createOrder(order);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return orderControllerService.getOrderById(id);
+        return ResponseEntity.ok().body(orderControllerService.getOrderById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") UUID id,
                                              @RequestBody Order orderUpdate) throws ResourceNotFoundException {
-        return orderControllerService.updateOrder(id, orderUpdate);
+        return ResponseEntity.ok().body(orderControllerService.updateOrder(id, orderUpdate));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Order> deleteOrder(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return orderControllerService.deleteOrder(id);
+        orderControllerService.deleteOrder(id);
+        return ResponseEntity.ok().build();
     }
 }
