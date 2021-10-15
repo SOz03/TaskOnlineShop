@@ -1,0 +1,13 @@
+# Spring Boot configuration
+spring:
+
+  # Database
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop_db?currentSchema=shop
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 080801
+
+  # Flyway
+  flyway:
+    schemas: shop

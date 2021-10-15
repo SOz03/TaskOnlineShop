@@ -1,7 +1,6 @@
 package ru.i.sys.labs.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.BasketProduct;
@@ -11,10 +10,10 @@ import ru.i.sys.labs.serviceDAO.BasketProductRepositoryDAO;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class BasketProductService {
 
-    private final Logger log = LoggerFactory.getLogger(BasketProductService.class);
     private final BasketProductRepositoryDAO basketProductRepositoryDAO;
 
     @Autowired
