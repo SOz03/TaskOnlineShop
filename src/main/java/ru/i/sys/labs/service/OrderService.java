@@ -2,11 +2,18 @@ package ru.i.sys.labs.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
+import ru.i.sys.labs.timer.PayOrderTimer;
+import ru.i.sys.labs.timer.SchedulerService;
+import ru.i.sys.labs.timer.TimerInfo;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,11 +21,16 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
+    @Value("${spring.application.status.pay}")
+    private boolean pay;
+
+    private final SchedulerService scheduler;
     private final OrderRepositoryDAO orderRepositoryDAO;
 
     @Autowired
-    public OrderService(OrderRepositoryDAO orderRepositoryDAO) {
+    public OrderService(OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler) {
         this.orderRepositoryDAO = orderRepositoryDAO;
+        this.scheduler = scheduler;
     }
 
     public List<Order> getAllOrders() {
@@ -29,6 +41,12 @@ public class OrderService {
     public void createOrder(Order order) {
         log.info("starting product creation");
         orderRepositoryDAO.save(order);
+
+        if(pay){
+            TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
+            scheduler.schedule(PayOrderTimer.class, order, info);
+        }
+
         log.info("finished product creation");
     }
 
@@ -62,5 +80,37 @@ public class OrderService {
                     log.warn("order with id = {} not found", id);
                     return new ResourceNotFoundException("Нет данных о заказе с id= " + id);
                 });
+    }
+
+    public Order payOrder(UUID orderId, BigDecimal sum) throws ResourceNotFoundException {
+        log.info("Payment started");
+        Order order = findByID(orderId);
+        Date nowDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(order.getDate());
+        calendar.add(Calendar.HOUR_OF_DAY, 1);
+
+        if (order.getStatus().equals("не оплачен")) {
+            if (sum.equals(order.getCost())) {
+                if (pay) {
+                    if (nowDate.before(calendar.getTime())) {
+                        order.setStatus("оплачен");
+                        updateOrder(orderId, order);
+                    } else {
+                        log.warn("Вышло время для оплаты");
+                    }
+                } else {
+                    order.setStatus("оплачен");
+                    updateOrder(orderId, order);
+                }
+            } else {
+                log.info("Вы указали неверную сумму");
+            }
+        } else {
+            log.info("Заказ уже оплачен");
+        }
+
+        log.info("Payment finished");
+        return order;
     }
 }

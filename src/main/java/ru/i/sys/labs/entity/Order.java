@@ -12,6 +12,9 @@ public class Order {
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
@@ -22,13 +25,15 @@ public class Order {
     @Column(name = "date")
     private Date date;
 
-    public Order() {}
+    public Order() {
+    }
 
-    public Order(Delivery delivery, BigDecimal cost, Date date) {
+    public Order(Delivery delivery, BigDecimal cost, Date date, String status) {
         this.id = UUID.randomUUID();
         this.delivery = delivery;
         this.cost = cost;
         this.date = date;
+        this.status = status;
     }
 
     public UUID getId() {
@@ -37,6 +42,14 @@ public class Order {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Delivery getDelivery() {
@@ -71,6 +84,7 @@ public class Order {
         Order order = (Order) o;
 
         if (getId() != null ? !getId().equals(order.getId()) : order.getId() != null) return false;
+        if (getStatus() != null ? !getStatus().equals(order.getStatus()) : order.getStatus() != null) return false;
         if (getDelivery() != null ? !getDelivery().equals(order.getDelivery()) : order.getDelivery() != null)
             return false;
         if (getCost() != null ? !getCost().equals(order.getCost()) : order.getCost() != null) return false;
@@ -80,6 +94,7 @@ public class Order {
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
         result = 31 * result + (getDelivery() != null ? getDelivery().hashCode() : 0);
         result = 31 * result + (getCost() != null ? getCost().hashCode() : 0);
         result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
@@ -90,6 +105,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
+                ", status='" + status + '\'' +
                 ", delivery=" + delivery +
                 ", cost=" + cost +
                 ", date=" + date +

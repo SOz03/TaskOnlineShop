@@ -11,3 +11,8 @@ spring:
   # Flyway
   flyway:
     schemas: shop
+
+  #Time status for pay orders (true/false)
+  application:
+    status:
+      pay: true

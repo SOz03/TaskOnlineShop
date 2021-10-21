@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/shop/entities/basket-products")
+@RequestMapping("/api/shop/entities/basket-products")
 public class BasketProductController {
 
     private final BasketProductService basketProductControllerService;
