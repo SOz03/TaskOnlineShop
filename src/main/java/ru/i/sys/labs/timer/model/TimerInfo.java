@@ -1,4 +1,4 @@
-package ru.i.sys.labs.timer;
+package ru.i.sys.labs.timer.model;
 
 import java.util.Date;
 

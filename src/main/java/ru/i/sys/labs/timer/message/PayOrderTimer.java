@@ -1,4 +1,4 @@
-package ru.i.sys.labs.timer;
+package ru.i.sys.labs.timer.message;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;

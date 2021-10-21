@@ -7,15 +7,12 @@ import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
-import ru.i.sys.labs.timer.PayOrderTimer;
-import ru.i.sys.labs.timer.SchedulerService;
-import ru.i.sys.labs.timer.TimerInfo;
+import ru.i.sys.labs.timer.message.PayOrderTimer;
+import ru.i.sys.labs.timer.service.SchedulerService;
+import ru.i.sys.labs.timer.model.TimerInfo;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -96,6 +93,7 @@ public class OrderService {
                     if (nowDate.before(calendar.getTime())) {
                         order.setStatus("оплачен");
                         updateOrder(orderId, order);
+                        scheduler.deleteTimer(orderId.toString());
                     } else {
                         log.warn("Вышло время для оплаты");
                     }

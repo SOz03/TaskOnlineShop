@@ -1,7 +1,8 @@
-package ru.i.sys.labs.timer;
+package ru.i.sys.labs.timer.service;
 
 import org.quartz.*;
 import ru.i.sys.labs.entity.Order;
+import ru.i.sys.labs.timer.model.TimerInfo;
 
 import java.util.Date;
 
@@ -12,7 +13,7 @@ public class TimerUtils {
 
     public static JobDetail buildJobDetail(final Class jobClass, Order order, TimerInfo timerInfo) {
         final JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put(jobClass.getSimpleName(), timerInfo);
+        jobDataMap.put(order.getId().toString(), timerInfo);
 
         return JobBuilder
                 .newJob(jobClass)
