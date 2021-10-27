@@ -8,17 +8,20 @@ import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
 import ru.i.sys.labs.timer.message.PayOrderTimer;
-import ru.i.sys.labs.timer.service.SchedulerService;
 import ru.i.sys.labs.timer.model.TimerInfo;
+import ru.i.sys.labs.timer.service.SchedulerService;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
 public class OrderService {
 
-    @Value("${spring.application.status.pay}")
+    @Value("${spring.application.quartz.enabled}")
     private boolean pay;
 
     private final SchedulerService scheduler;
@@ -39,7 +42,8 @@ public class OrderService {
         log.info("starting product creation");
         orderRepositoryDAO.save(order);
 
-        if(pay){
+        //QUARTZ
+        if (pay) {
             TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
             scheduler.schedule(PayOrderTimer.class, order, info);
         }
@@ -93,6 +97,7 @@ public class OrderService {
                     if (nowDate.before(calendar.getTime())) {
                         order.setStatus("оплачен");
                         updateOrder(orderId, order);
+                        //QUARTZ
                         scheduler.deleteTimer(orderId.toString());
                     } else {
                         log.warn("Вышло время для оплаты");

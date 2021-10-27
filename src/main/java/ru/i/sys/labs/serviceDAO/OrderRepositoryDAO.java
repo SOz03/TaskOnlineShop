@@ -42,4 +42,9 @@ public class OrderRepositoryDAO {
         orderRepository.deleteById(id);
         log.info("data received");
     }
+
+    public List<Order> findListNoPay(){
+        log.info("executing a database query 'findListNoPay'");
+        return orderRepository.findListNoPay();
+    }
 }

@@ -12,7 +12,14 @@ spring:
   flyway:
     schemas: shop
 
-  #Time status for pay orders (true/false)
+  #Timer
   application:
-    status:
-      pay: true
+    #Quartz
+    quartz:
+     enabled: false #status for pay orders (true/false)
+
+    #Scheduled
+    scheduled:
+     enabled: false #status for pay orders (true/false)
+     time: 0 * * ? * *
+     class: one #(one/two)
