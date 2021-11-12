@@ -13,7 +13,8 @@ public class Order {
     private UUID id;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusPay status;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
@@ -28,7 +29,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Delivery delivery, BigDecimal cost, Date date, String status) {
+    public Order(Delivery delivery, BigDecimal cost, Date date, StatusPay status) {
         this.id = UUID.randomUUID();
         this.delivery = delivery;
         this.cost = cost;
@@ -44,11 +45,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getStatus() {
+    public StatusPay getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusPay status) {
         this.status = status;
     }
 
@@ -105,7 +106,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", status='" + status + '\'' +
+                ", status='" + status.getName() + '\'' +
                 ", delivery=" + delivery +
                 ", cost=" + cost +
                 ", date=" + date +

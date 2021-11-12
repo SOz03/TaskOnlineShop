@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Order;
+import ru.i.sys.labs.entity.StatusPay;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
 import ru.i.sys.labs.timer.message.PayOrderTimer;
@@ -43,6 +44,9 @@ public class OrderService {
         orderRepositoryDAO.save(order);
 
         //QUARTZ
+        if (!pay){
+            pay = false;
+        }
         if (pay) {
             TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
             scheduler.schedule(PayOrderTimer.class, order, info);
@@ -91,26 +95,30 @@ public class OrderService {
         calendar.setTime(order.getDate());
         calendar.add(Calendar.HOUR_OF_DAY, 1);
 
-        if (order.getStatus().equals("не оплачен")) {
+        if (order.getStatus().equals(StatusPay.NOT_PAID)) {
             if (sum.equals(order.getCost())) {
+                if (!pay){
+                    pay = false;
+                }
                 if (pay) {
                     if (nowDate.before(calendar.getTime())) {
-                        order.setStatus("оплачен");
+                        order.setStatus(StatusPay.PAID);
                         updateOrder(orderId, order);
+
                         //QUARTZ
                         scheduler.deleteTimer(orderId.toString());
                     } else {
-                        log.warn("Вышло время для оплаты");
+                        log.warn("Time out for payment");
                     }
                 } else {
-                    order.setStatus("оплачен");
+                    order.setStatus(StatusPay.PAID);
                     updateOrder(orderId, order);
                 }
             } else {
-                log.info("Вы указали неверную сумму");
+                log.info("Wrong amount");
             }
         } else {
-            log.info("Заказ уже оплачен");
+            log.warn("Order paid");
         }
 
         log.info("Payment finished");

@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) throws ResourceNotFoundException {
+    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         orderControllerService.createOrder(order);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

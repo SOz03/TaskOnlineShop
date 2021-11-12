@@ -20,6 +20,7 @@ spring:
 
     #Scheduled
     scheduled:
-     enabled: false #status for pay orders (true/false)
+     enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
-     class: one #(one/two)
+     property:
+       selectStyleMessage: all #(one/two/all)
