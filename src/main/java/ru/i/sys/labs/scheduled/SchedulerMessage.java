@@ -1,6 +1,6 @@
 package ru.i.sys.labs.scheduled;
 
-public interface SchedulerLogic {
+public interface SchedulerMessage {
 
     void messageForPay();
 }

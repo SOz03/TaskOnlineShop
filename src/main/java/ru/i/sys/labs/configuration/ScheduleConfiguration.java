@@ -7,40 +7,38 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import ru.i.sys.labs.scheduled.OneScheduler;
-import ru.i.sys.labs.scheduled.TwoScheduler;
+import ru.i.sys.labs.scheduled.SchedulerMessage;
 
 @Configuration
 @Slf4j
-@EnableConfigurationProperties(Notification.class)
+@EnableConfigurationProperties(Property.class)
 @EnableScheduling
 @ConditionalOnProperty(name = "spring.application.scheduled.enabled", matchIfMissing = true)
 public class ScheduleConfiguration {
 
-    private final OneScheduler one;
-    private final TwoScheduler two;
-    private final Notification notification;
+    private final SchedulerMessage[] schedulerMessage;
+    private final Property property;
 
     @Autowired
-    public ScheduleConfiguration(OneScheduler oneScheduler, TwoScheduler twoScheduler, Notification notification) {
-        this.one = oneScheduler;
-        this.two = twoScheduler;
-        this.notification = notification;
+    public ScheduleConfiguration(SchedulerMessage[] schedulerMessage, Property property) {
+        this.schedulerMessage = schedulerMessage;
+        this.property = property;
     }
 
     @Scheduled(cron = "${spring.application.scheduled.time}")
-    public void enabledNotification(){
-        switch (notification.getSelectStyleMessage()) {
-            case "all":
-                one.messageForPay();
-                two.messageForPay();
-                break;
-            case "one":
-                one.messageForPay();
-                break;
-            case "two":
-                two.messageForPay();
-                break;
+    public void enabledNotification() {
+
+        String[] messages = property.getMessageStyle().split(" ");
+        for (String message : messages) {
+            for (SchedulerMessage scheduler : schedulerMessage) {
+                if (message.equals("all")) {
+                    scheduler.messageForPay();
+                } else if (message.equals(scheduler.getClass().getSimpleName())) {
+                    scheduler.messageForPay();
+                    break;
+                }
+            }
         }
+
     }
 }

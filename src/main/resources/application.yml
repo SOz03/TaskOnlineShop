@@ -23,4 +23,4 @@ spring:
      enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
      property:
-       selectStyleMessage: all #(one/two/all)
+       messageStyle: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)

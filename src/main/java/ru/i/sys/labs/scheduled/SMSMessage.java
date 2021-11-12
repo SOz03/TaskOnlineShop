@@ -10,12 +10,12 @@ import java.util.List;
 //@ConditionalOnProperty(prefix = "spring.application.scheduled", name = "class", havingValue = "two")
 @Slf4j
 @Component
-public class TwoScheduler implements SchedulerLogic {
+public class SMSMessage implements SchedulerMessage {
 
     private final SchedService service;
 
     @Autowired
-    public TwoScheduler(SchedService schedulerService) {
+    public SMSMessage(SchedService schedulerService) {
         this.service = schedulerService;
     }
 
@@ -23,7 +23,7 @@ public class TwoScheduler implements SchedulerLogic {
     public void messageForPay() {
         List<Order> ordersNoPay = service.findListNoPay();
         for (Order order : ordersNoPay) {
-            log.warn("TWO Order with ID {} no pair", order.getId());
+            log.warn("SMS-message || Order with ID {} no pair", order.getId());
         }
     }
 }
