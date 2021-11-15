@@ -2,8 +2,10 @@ package ru.i.sys.labs.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import ru.i.sys.labs.configuration.Property;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.entity.StatusPay;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -22,14 +24,13 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
-    @Value("${spring.application.quartz.enabled}")
-    private boolean pay;
-
+    private final Property property;
     private final SchedulerService scheduler;
     private final OrderRepositoryDAO orderRepositoryDAO;
 
     @Autowired
-    public OrderService(OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler) {
+    public OrderService(Property property, OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler) {
+        this.property = property;
         this.orderRepositoryDAO = orderRepositoryDAO;
         this.scheduler = scheduler;
     }
@@ -39,15 +40,13 @@ public class OrderService {
         return orderRepositoryDAO.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void createOrder(Order order) {
         log.info("starting product creation");
         orderRepositoryDAO.save(order);
 
         //QUARTZ
-        if (!pay){
-            pay = false;
-        }
-        if (pay) {
+        if (property.isPayQ()) {
             TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
             scheduler.schedule(PayOrderTimer.class, order, info);
         }
@@ -55,11 +54,13 @@ public class OrderService {
         log.info("finished product creation");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Order getOrderById(UUID id) throws ResourceNotFoundException {
         log.info("get order");
         return findByID(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Order updateOrder(UUID id, Order orderUpdate) throws ResourceNotFoundException {
         Order order = findByID(id);
         order.setCost(orderUpdate.getCost());
@@ -70,14 +71,15 @@ public class OrderService {
         return order;
     }
 
-    public void deleteOrder(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteOrder(UUID id) {
         log.info("starting delete order by id");
-        findByID(id);
         orderRepositoryDAO.deleteById(id);
         log.info("finished delete order by id");
     }
 
-    private Order findByID(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    Order findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search order");
         return orderRepositoryDAO
                 .findById(id)
@@ -87,6 +89,7 @@ public class OrderService {
                 });
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Order payOrder(UUID orderId, BigDecimal sum) throws ResourceNotFoundException {
         log.info("Payment started");
         Order order = findByID(orderId);
@@ -97,10 +100,7 @@ public class OrderService {
 
         if (order.getStatus().equals(StatusPay.NOT_PAID)) {
             if (sum.equals(order.getCost())) {
-                if (!pay){
-                    pay = false;
-                }
-                if (pay) {
+                if (property.isPayQ()) {
                     if (nowDate.before(calendar.getTime())) {
                         order.setStatus(StatusPay.PAID);
                         updateOrder(orderId, order);

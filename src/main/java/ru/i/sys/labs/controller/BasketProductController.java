@@ -45,7 +45,7 @@ public class BasketProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<BasketProduct> deleteBasketProduct(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+    public ResponseEntity<BasketProduct> deleteBasketProduct(@PathVariable(value = "id") UUID id) {
         basketProductControllerService.deleteBasketProduct(id);
         return ResponseEntity.ok().build();
     }

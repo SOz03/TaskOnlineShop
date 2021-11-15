@@ -13,7 +13,7 @@ import ru.i.sys.labs.scheduled.SchedulerMessage;
 @Slf4j
 @EnableConfigurationProperties(Property.class)
 @EnableScheduling
-@ConditionalOnProperty(name = "spring.application.scheduled.enabled", matchIfMissing = true)
+@ConditionalOnProperty(name = "spring.application.message-settings.enabled", matchIfMissing = true)
 public class ScheduleConfiguration {
 
     private final SchedulerMessage[] schedulerMessage;
@@ -25,10 +25,10 @@ public class ScheduleConfiguration {
         this.property = property;
     }
 
-    @Scheduled(cron = "${spring.application.scheduled.time}")
+    @Scheduled(cron = "${spring.application.message-settings.time}")
     public void enabledNotification() {
 
-        String[] messages = property.getMessageStyle().split(" ");
+        String[] messages = property.getScheduled().split(" ");
         for (String message : messages) {
             for (SchedulerMessage scheduler : schedulerMessage) {
                 if (message.equals("all")) {

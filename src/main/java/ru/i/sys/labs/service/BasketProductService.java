@@ -3,6 +3,8 @@ package ru.i.sys.labs.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.entity.BasketProduct;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.BasketProductRepositoryDAO;
@@ -26,17 +28,20 @@ public class BasketProductService {
         return basketProductRepositoryDAO.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void createBasketProduct(BasketProduct basketProduct) {
         log.info("starting basket product creation");
         basketProductRepositoryDAO.save(basketProduct);
         log.info("finished basket product creation");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public BasketProduct getBasketProductById(UUID id) throws ResourceNotFoundException {
         log.info("get basket product");
         return findByID(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public BasketProduct updateBasketProduct(UUID id, BasketProduct basketProductUpdate) throws ResourceNotFoundException {
         BasketProduct basketProduct = findByID(id);
         basketProduct.setOrder(basketProductUpdate.getOrder());
@@ -48,15 +53,15 @@ public class BasketProductService {
         return basketProduct;
     }
 
-    public void deleteBasketProduct(UUID id) throws ResourceNotFoundException {
-
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteBasketProduct(UUID id) {
         log.info("starting delete basket product by id");
-        findByID(id);
         basketProductRepositoryDAO.deleteById(id);
         log.info("finished delete basket product by id");
     }
 
-    private BasketProduct findByID(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    BasketProduct findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search basket product");
         return basketProductRepositoryDAO
                 .findById(id)

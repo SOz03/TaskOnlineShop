@@ -44,7 +44,7 @@ public class DeliveryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Delivery> deleteDelivery(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+    public ResponseEntity<Delivery> deleteDelivery(@PathVariable(value = "id") UUID id) {
         deliveryControllerService.deleteDelivery(id);
         return ResponseEntity.ok().build();
     }

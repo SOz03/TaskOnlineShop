@@ -44,7 +44,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Order> deleteOrder(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+    public ResponseEntity<Order> deleteOrder(@PathVariable(value = "id") UUID id) {
         orderControllerService.deleteOrder(id);
         return ResponseEntity.ok().build();
     }

@@ -3,6 +3,8 @@ package ru.i.sys.labs.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.ProductRepositoryDAO;
@@ -26,17 +28,20 @@ public class ProductService {
         return productRepositoryDAO.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void createProduct(Product product) {
         log.info("starting product creation");
         productRepositoryDAO.save(product);
         log.info("finished product creation");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Product getProductById(UUID id) throws ResourceNotFoundException {
         log.info("get product");
         return findByID(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Product updateProduct(UUID id, Product productUpdate) throws ResourceNotFoundException {
         Product product = findByID(id);
         product.setName(productUpdate.getName());
@@ -48,14 +53,15 @@ public class ProductService {
         return product;
     }
 
-    public void deleteProduct(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteProduct(UUID id) {
         log.info("starting delete product by id");
-        findByID(id);
         productRepositoryDAO.deleteById(id);
         log.info("finished delete product by id");
     }
 
-    private Product findByID(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    Product findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search product");
         return productRepositoryDAO
                 .findById(id)

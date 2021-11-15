@@ -3,6 +3,8 @@ package ru.i.sys.labs.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.entity.Customer;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.CustomerRepositoryDAO;
@@ -26,17 +28,20 @@ public class CustomerService {
         return customerRepositoryDAO.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void createCustomer(Customer customer) {
         log.info("starting customer creation");
         customerRepositoryDAO.save(customer);
         log.info("finished customer creation");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Customer getCustomerById(UUID id) throws ResourceNotFoundException {
         log.info("get customer");
         return findByID(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Customer updateCustomer(UUID id, Customer customerUpdate) throws ResourceNotFoundException {
         Customer customer = findByID(id);
         customer.setFIO(customerUpdate.getFIO());
@@ -48,14 +53,15 @@ public class CustomerService {
         return customer;
     }
 
-    public void deleteCustomer(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteCustomer(UUID id) {
         log.info("starting delete customer by id");
-        findByID(id);
         customerRepositoryDAO.deleteById(id);
         log.info("finished delete customer by id");
     }
 
-    private Customer findByID(UUID id) throws ResourceNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    Customer findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search customer");
         return customerRepositoryDAO
                 .findById(id)

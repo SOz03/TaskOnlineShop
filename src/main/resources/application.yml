@@ -14,13 +14,9 @@ spring:
 
   #Timer
   application:
-    #Quartz
-    quartz:
-     enabled: false #status for pay orders (true/false)
-
-    #Scheduled
-    scheduled:
+    message-settings:
      enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
-     property:
-       messageStyle: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)
+     message-type:
+#       payQ: false #status Quartz for pay orders (true/false)
+       scheduled: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)
