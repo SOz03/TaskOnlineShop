@@ -26,10 +26,9 @@ public class CustomerRepositoryDAO {
         return customerRepository.findAll();
     }
 
-    public void save(Customer customer) {
+    public Customer save(Customer customer) {
         log.info("executing a database query 'save'");
-        customerRepository.save(customer);
-        log.info("data received");
+        return customerRepository.save(customer);
     }
 
     public Optional<Customer> findById(UUID id) {

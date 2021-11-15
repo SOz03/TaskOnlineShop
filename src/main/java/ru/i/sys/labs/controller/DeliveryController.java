@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.DeliveryDTO;
 import ru.i.sys.labs.entity.Delivery;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.DeliveryService;
@@ -22,25 +23,24 @@ public class DeliveryController {
     }
 
     @GetMapping("")
-    public List<Delivery> getAllDelivery() {
+    public List<DeliveryDTO> getAllDelivery() {
         return deliveryControllerService.getAllDelivery();
     }
 
     @PostMapping("")
-    public ResponseEntity<Delivery> createDelivery(@RequestBody Delivery delivery) {
-        deliveryControllerService.createDelivery(delivery);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<DeliveryDTO> createDelivery(@RequestBody DeliveryDTO deliveryDTO) {
+        return new ResponseEntity<>(deliveryControllerService.createDelivery(deliveryDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Delivery> getDeliveryById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(deliveryControllerService.getDeliveryById(id));
+    public ResponseEntity<DeliveryDTO> getDeliveryById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(deliveryControllerService.getDeliveryById(id), HttpStatus.FOUND);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Delivery> updateDelivery(@PathVariable(value = "id") UUID id,
-                                                   @RequestBody Delivery deliveryUpdate) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(deliveryControllerService.updateDelivery(id, deliveryUpdate));
+    public ResponseEntity<DeliveryDTO> updateDelivery(@PathVariable(value = "id") UUID id,
+                                                      @RequestBody DeliveryDTO deliveryUpdate) throws ResourceNotFoundException {
+        return new ResponseEntity<>(deliveryControllerService.updateDelivery(id, deliveryUpdate), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

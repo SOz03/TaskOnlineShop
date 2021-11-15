@@ -26,10 +26,9 @@ public class CustomerBasketRepositoryDAO {
         return customerBasketRepository.findAll();
     }
 
-    public void save(CustomerBasket customerBasket) {
+    public CustomerBasket save(CustomerBasket customerBasket) {
         log.info("executing a database query 'save'");
-        customerBasketRepository.save(customerBasket);
-        log.info("data received");
+        return customerBasketRepository.save(customerBasket);
     }
 
     public Optional<CustomerBasket> findById(UUID id) {

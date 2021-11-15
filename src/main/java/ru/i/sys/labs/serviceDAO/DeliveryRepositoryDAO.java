@@ -26,10 +26,9 @@ public class DeliveryRepositoryDAO {
         return deliveryRepository.findAll();
     }
 
-    public void save(Delivery delivery) {
+    public Delivery save(Delivery delivery) {
         log.info("executing a database query 'save'");
-        deliveryRepository.save(delivery);
-        log.info("data received");
+        return deliveryRepository.save(delivery);
     }
 
     public Optional<Delivery> findById(UUID id) {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.OrderDTO;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.OrderService;
@@ -23,9 +24,9 @@ public class PayOrderController {
     }
 
     @PatchMapping("/{orderId}/{sum}")
-    public ResponseEntity<Order> payOrder(@PathVariable UUID orderId,
-                                          @PathVariable BigDecimal sum) throws ResourceNotFoundException {
+    public ResponseEntity<OrderDTO> payOrder(@PathVariable UUID orderId,
+                                             @PathVariable BigDecimal sum) throws ResourceNotFoundException {
 
-        return new ResponseEntity<>(orderService.payOrder(orderId, sum), HttpStatus.OK);
+        return new ResponseEntity<>(orderService.payOrder(orderId, sum), HttpStatus.PAYMENT_REQUIRED);
     }
 }

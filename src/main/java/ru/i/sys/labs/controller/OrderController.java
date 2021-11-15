@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.OrderDTO;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.OrderService;
@@ -22,29 +23,28 @@ public class OrderController {
     }
 
     @GetMapping("")
-    public List<Order> getAllOrders() {
+    public List<OrderDTO> getAllOrders() {
         return orderControllerService.getAllOrders();
     }
 
     @PostMapping("")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        orderControllerService.createOrder(order);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<OrderDTO> createOrder(@RequestBody Order order) {
+        return new ResponseEntity<>(orderControllerService.createOrder(order), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(orderControllerService.getOrderById(id));
+    public ResponseEntity<OrderDTO> getOrderById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(orderControllerService.getOrderById(id), HttpStatus.FOUND);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable(value = "id") UUID id,
-                                             @RequestBody Order orderUpdate) throws ResourceNotFoundException {
+    public ResponseEntity<OrderDTO> updateOrder(@PathVariable(value = "id") UUID id,
+                                             @RequestBody OrderDTO orderUpdate) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(orderControllerService.updateOrder(id, orderUpdate));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Order> deleteOrder(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<OrderDTO> deleteOrder(@PathVariable(value = "id") UUID id) {
         orderControllerService.deleteOrder(id);
         return ResponseEntity.ok().build();
     }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.BasketProductDTO;
 import ru.i.sys.labs.entity.BasketProduct;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.BasketProductService;
@@ -23,25 +24,24 @@ public class BasketProductController {
     }
 
     @GetMapping("")
-    public List<BasketProduct> getAllBasketProducts() {
+    public List<BasketProductDTO> getAllBasketProducts() {
         return basketProductControllerService.getAllBasketProducts();
     }
 
     @PostMapping("")
-    public ResponseEntity<BasketProduct> createBasketProduct(@RequestBody BasketProduct basketProduct) {
-        basketProductControllerService.createBasketProduct(basketProduct);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<BasketProductDTO> createBasketProduct(@RequestBody BasketProductDTO basketProductDTO) {
+        return new ResponseEntity<>(basketProductControllerService.createBasketProduct(basketProductDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BasketProduct> getBasketProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(basketProductControllerService.getBasketProductById(id));
+    public ResponseEntity<BasketProductDTO> getBasketProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(basketProductControllerService.getBasketProductById(id), HttpStatus.FOUND);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BasketProduct> updateBasketProduct(@PathVariable(value = "id") UUID id,
-                                                             @RequestBody BasketProduct basketProductUpdate) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(basketProductControllerService.updateBasketProduct(id, basketProductUpdate));
+    public ResponseEntity<BasketProductDTO> updateBasketProduct(@PathVariable(value = "id") UUID id,
+                                                                @RequestBody BasketProductDTO basketProductDTOUpdate) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(basketProductControllerService.updateBasketProduct(id, basketProductDTOUpdate));
     }
 
     @DeleteMapping("/{id}")

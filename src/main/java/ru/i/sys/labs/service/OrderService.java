@@ -1,12 +1,16 @@
 package ru.i.sys.labs.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.configuration.Property;
+import ru.i.sys.labs.dto.OrderDTO;
+import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Order;
+import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.entity.StatusPay;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
@@ -19,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -27,23 +32,31 @@ public class OrderService {
     private final Property property;
     private final SchedulerService scheduler;
     private final OrderRepositoryDAO orderRepositoryDAO;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public OrderService(Property property, OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler) {
+    public OrderService(Property property, OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler,
+                        ModelMapper modelMapper) {
         this.property = property;
         this.orderRepositoryDAO = orderRepositoryDAO;
         this.scheduler = scheduler;
+        this.modelMapper = modelMapper;
     }
 
-    public List<Order> getAllOrders() {
+    public List<OrderDTO> getAllOrders() {
         log.info("list orders");
-        return orderRepositoryDAO.findAll();
+
+        return orderRepositoryDAO
+                .findAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createOrder(Order order) {
+    public OrderDTO createOrder(Order order) {
         log.info("starting product creation");
-        orderRepositoryDAO.save(order);
+        OrderDTO orderResponse = toDTO(orderRepositoryDAO.save(order));
 
         //QUARTZ
         if (property.isPayQ()) {
@@ -51,24 +64,25 @@ public class OrderService {
             scheduler.schedule(PayOrderTimer.class, order, info);
         }
 
-        log.info("finished product creation");
+        return orderResponse;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Order getOrderById(UUID id) throws ResourceNotFoundException {
+    public OrderDTO getOrderById(UUID id) throws ResourceNotFoundException {
         log.info("get order");
         return findByID(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Order updateOrder(UUID id, Order orderUpdate) throws ResourceNotFoundException {
-        Order order = findByID(id);
-        order.setCost(orderUpdate.getCost());
-        order.setDate(orderUpdate.getDate());
-        order.setDelivery(orderUpdate.getDelivery());
+    public OrderDTO updateOrder(UUID id, OrderDTO orderDTOUpdate) throws ResourceNotFoundException {
+        OrderDTO orderDTO = findByID(id);
+        orderDTO.setCost(orderDTOUpdate.getCost());
+        orderDTO.setDate(orderDTOUpdate.getDate());
+        orderDTO.setDelivery(orderDTOUpdate.getDelivery());
         log.info("save order");
-        orderRepositoryDAO.save(order);
-        return order;
+
+        Order order = orderRepositoryDAO.save(toEntity(orderDTO));
+        return toDTO(order);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -79,20 +93,23 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    Order findByID(UUID id) throws ResourceNotFoundException {
+    OrderDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search order");
-        return orderRepositoryDAO
+        Order order = orderRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> {
                     log.warn("order with id = {} not found", id);
                     return new ResourceNotFoundException("Нет данных о заказе с id= " + id);
                 });
+        return toDTO(order);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Order payOrder(UUID orderId, BigDecimal sum) throws ResourceNotFoundException {
+    public OrderDTO payOrder(UUID orderId, BigDecimal sum) throws ResourceNotFoundException {
         log.info("Payment started");
-        Order order = findByID(orderId);
+        OrderDTO newOrder = findByID(orderId);
+        Order order = toEntity(newOrder);
+
         Date nowDate = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(order.getDate());
@@ -103,7 +120,7 @@ public class OrderService {
                 if (property.isPayQ()) {
                     if (nowDate.before(calendar.getTime())) {
                         order.setStatus(StatusPay.PAID);
-                        updateOrder(orderId, order);
+                        updateOrder(orderId, toDTO(order));
 
                         //QUARTZ
                         scheduler.deleteTimer(orderId.toString());
@@ -112,7 +129,7 @@ public class OrderService {
                     }
                 } else {
                     order.setStatus(StatusPay.PAID);
-                    updateOrder(orderId, order);
+                    updateOrder(orderId, toDTO(order));
                 }
             } else {
                 log.info("Wrong amount");
@@ -122,6 +139,14 @@ public class OrderService {
         }
 
         log.info("Payment finished");
-        return order;
+        return toDTO(order);
+    }
+
+    private OrderDTO toDTO(Order order) {
+        return modelMapper.map(order, OrderDTO.class);
+    }
+
+    private Order toEntity(OrderDTO orderDTO) {
+        return modelMapper.map(orderDTO, Order.class);
     }
 }

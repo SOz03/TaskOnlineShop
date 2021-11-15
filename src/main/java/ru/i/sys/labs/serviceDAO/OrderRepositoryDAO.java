@@ -26,10 +26,9 @@ public class OrderRepositoryDAO {
         return orderRepository.findAll();
     }
 
-    public void save(Order order) {
+    public Order save(Order order) {
         log.info("executing a database query 'save'");
-        orderRepository.save(order);
-        log.info("data received");
+        return orderRepository.save(order);
     }
 
     public Optional<Order> findById(UUID id) {

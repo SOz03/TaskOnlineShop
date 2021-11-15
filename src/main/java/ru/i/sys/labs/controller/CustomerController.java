@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.CustomerDTO;
 import ru.i.sys.labs.entity.Customer;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.CustomerService;
@@ -23,25 +24,24 @@ public class CustomerController {
     }
 
     @GetMapping("")
-    public List<Customer> getAllCustomers() {
+    public List<CustomerDTO> getAllCustomers() {
         return customerControllerService.getAllCustomers();
     }
 
     @PostMapping("")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        customerControllerService.createCustomer(customer);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO) {
+        return new ResponseEntity<>(customerControllerService.createCustomer(customerDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(customerControllerService.getCustomerById(id));
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(customerControllerService.getCustomerById(id), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") UUID id,
-                                                   @RequestBody Customer customerUpdate) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(customerControllerService.updateCustomer(id, customerUpdate));
+    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable(value = "id") UUID id,
+                                                   @RequestBody CustomerDTO customerDTOUpdate) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(customerControllerService.updateCustomer(id, customerDTOUpdate));
     }
 
     @DeleteMapping("/{id}")
