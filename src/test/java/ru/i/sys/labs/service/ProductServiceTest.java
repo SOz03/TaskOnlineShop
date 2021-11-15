@@ -19,14 +19,14 @@ class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
-    @Test
-    void createProduct() throws ResourceNotFoundException {
-        Product product = new Product("мясо", new BigDecimal("315.01"),
-                new Date(), "За килограмм");
-
-        productService.createProduct(product);
-        assertNotNull(productService.getProductById(product.getId()));
-    }
+//    @Test
+//    void createProduct() throws ResourceNotFoundException {
+//        Product product = new Product("мясо", new BigDecimal("315.01"),
+//                new Date(), "За килограмм");
+//
+//        productService.createProduct(product);
+//        assertNotNull(productService.getProductById(product.getId()));
+//    }
 
     @Test
     void getProductById() {

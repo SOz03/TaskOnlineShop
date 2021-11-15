@@ -1,56 +1,72 @@
 package ru.i.sys.labs.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.ProductRepositoryDAO;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 public class ProductService {
 
+    private final ModelMapper modelMapper;
     private final ProductRepositoryDAO productRepositoryDAO;
 
     @Autowired
-    public ProductService(ProductRepositoryDAO productRepositoryDAO) {
+    public ProductService(ProductRepositoryDAO productRepositoryDAO,
+                          ModelMapper modelMapper) {
         this.productRepositoryDAO = productRepositoryDAO;
+        this.modelMapper = modelMapper;
     }
 
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         log.info("list products");
-        return productRepositoryDAO.findAll();
+
+        return productRepositoryDAO
+                .findAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createProduct(Product product) {
+    public ProductDTO createProduct(ProductDTO productDTO) {
         log.info("starting product creation");
-        productRepositoryDAO.save(product);
-        log.info("finished product creation");
+
+        Product product = toEntity(productDTO);
+        Product newProduct = productRepositoryDAO.save(product);
+
+        return toDTO(newProduct);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Product getProductById(UUID id) throws ResourceNotFoundException {
-        log.info("get product");
+    public ProductDTO getProductById(UUID id) throws ResourceNotFoundException {
+        log.info("Get product");
         return findByID(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Product updateProduct(UUID id, Product productUpdate) throws ResourceNotFoundException {
-        Product product = findByID(id);
-        product.setName(productUpdate.getName());
-        product.setPrice(productUpdate.getPrice());
-        product.setProductionDate(productUpdate.getProductionDate());
-        product.setDescription(productUpdate.getDescription());
+    public ProductDTO updateProduct(UUID id, ProductDTO productDTOUpdate) throws ResourceNotFoundException {
+        ProductDTO productDTO = findByID(id);
+
+        productDTO.setName(productDTOUpdate.getName());
+        productDTO.setPrice(productDTOUpdate.getPrice());
+        productDTO.setProductionDate(productDTOUpdate.getProductionDate());
+        productDTO.setDescription(productDTOUpdate.getDescription());
+
         log.info("save product");
-        productRepositoryDAO.save(product);
-        return product;
+
+        return toDTO(productRepositoryDAO.save(toEntity(productDTO)));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -61,14 +77,25 @@ public class ProductService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    Product findByID(UUID id) throws ResourceNotFoundException {
+    ProductDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search product");
-        return productRepositoryDAO
+
+        Product product = productRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> {
                     log.warn("product with id = {} not found", id);
                     return new ResourceNotFoundException("Нет данных о продукте с id = " + id);
                 });
+
+        return toDTO(product);
+    }
+
+    private ProductDTO toDTO(Product product) {
+        return modelMapper.map(product, ProductDTO.class);
+    }
+
+    private Product toEntity(ProductDTO productDTO) {
+        return modelMapper.map(productDTO, Product.class);
     }
 
 }

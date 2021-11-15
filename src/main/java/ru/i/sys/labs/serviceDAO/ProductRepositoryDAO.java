@@ -26,10 +26,9 @@ public class ProductRepositoryDAO {
         return productRepository.findAll();
     }
 
-    public void save(Product product) {
+    public Product save(Product product) {
         log.info("executing a database query 'save'");
-        productRepository.save(product);
-        log.info("data received");
+        return productRepository.save(product);
     }
 
     public Optional<Product> findById(UUID id) {

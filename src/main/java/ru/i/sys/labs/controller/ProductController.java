@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.ProductService;
@@ -23,24 +24,23 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productControllerService.getAllProducts();
     }
 
     @PostMapping("")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        productControllerService.createProduct(product);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
+        return new ResponseEntity<>(productControllerService.createProduct(productDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(productControllerService.getProductById(id));
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(productControllerService.getProductById(id), HttpStatus.FOUND);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") UUID id,
-                                                 @RequestBody Product productUpdate) throws ResourceNotFoundException {
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable(value = "id") UUID id,
+                                                 @RequestBody ProductDTO productUpdate) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(productControllerService.updateProduct(id, productUpdate));
     }
 
