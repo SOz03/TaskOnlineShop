@@ -1,4 +1,5 @@
 # Spring Boot configuration
+
 spring:
 
   # Database
@@ -14,9 +15,15 @@ spring:
 
   #Timer
   application:
+    logback:
+     name: standardLogback
+
     message-settings:
      enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
      message-type:
 #       payQ: false #status Quartz for pay orders (true/false)
        scheduled: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)
+
+
+
