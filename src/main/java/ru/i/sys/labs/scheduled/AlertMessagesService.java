@@ -21,4 +21,8 @@ public class AlertMessagesService {
     public List<Order> findListNoPay(){
         return orderRepositoryDAO.findListNoPay();
     }
+
+    public List<Order> findListPaid(){
+        return orderRepositoryDAO.findListNoPay();
+    }
 }

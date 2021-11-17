@@ -49,7 +49,6 @@ public class ProductService {
         return toDTO(newProduct);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     public ProductDTO getProductById(UUID id) throws ResourceNotFoundException {
         log.info("Get product");
         return findByID(id);
@@ -57,16 +56,20 @@ public class ProductService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public ProductDTO updateProduct(UUID id, ProductDTO productDTOUpdate) throws ResourceNotFoundException {
-        ProductDTO productDTO = findByID(id);
-
-        productDTO.setName(productDTOUpdate.getName());
-        productDTO.setPrice(productDTOUpdate.getPrice());
-        productDTO.setProductionDate(productDTOUpdate.getProductionDate());
-        productDTO.setDescription(productDTOUpdate.getDescription());
+        Product product = productRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("product with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о продукте с id = " + id);
+                });
+        product.setName(productDTOUpdate.getName());
+        product.setPrice(productDTOUpdate.getPrice());
+        product.setProductionDate(productDTOUpdate.getProductionDate());
+        product.setDescription(productDTOUpdate.getDescription());
 
         log.info("save product");
 
-        return toDTO(productRepositoryDAO.save(toEntity(productDTO)));
+        return toDTO(productRepositoryDAO.save(product));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -77,7 +80,7 @@ public class ProductService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    ProductDTO findByID(UUID id) throws ResourceNotFoundException {
+    public ProductDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search product");
 
         Product product = productRepositoryDAO

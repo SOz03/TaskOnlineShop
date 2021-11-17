@@ -65,7 +65,6 @@ public class OrderService {
         return orderResponse;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     public OrderDTO getOrderById(UUID id) throws ResourceNotFoundException {
         log.info("get order");
         return findByID(id);
@@ -73,14 +72,18 @@ public class OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public OrderDTO updateOrder(UUID id, OrderDTO orderDTOUpdate) throws ResourceNotFoundException {
-        OrderDTO orderDTO = findByID(id);
-        orderDTO.setCost(orderDTOUpdate.getCost());
-        orderDTO.setDate(orderDTOUpdate.getDate());
-        orderDTO.setDelivery(orderDTOUpdate.getDelivery());
+        Order order = orderRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("order with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о заказе с id= " + id);
+                });
+        order.setCost(orderDTOUpdate.getCost());
+        order.setDate(orderDTOUpdate.getDate());
+        order.setDelivery(orderDTOUpdate.getDelivery());
         log.info("save order");
 
-        Order order = orderRepositoryDAO.save(toEntity(orderDTO));
-        return toDTO(order);
+        return toDTO(orderRepositoryDAO.save(order));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -91,7 +94,7 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    OrderDTO findByID(UUID id) throws ResourceNotFoundException {
+    public OrderDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search order");
         Order order = orderRepositoryDAO
                 .findById(id)

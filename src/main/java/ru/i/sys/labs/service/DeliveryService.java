@@ -48,7 +48,7 @@ public class DeliveryService {
         return toDTO(newDelivery);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+
     public DeliveryDTO getDeliveryById(UUID id) throws ResourceNotFoundException {
         log.info("get delivery");
         return findByID(id);
@@ -56,14 +56,19 @@ public class DeliveryService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public DeliveryDTO updateDelivery(UUID id, DeliveryDTO deliveryDTOUpdate) throws ResourceNotFoundException {
-        DeliveryDTO deliveryDTO = findByID(id);
-        deliveryDTO.setCost(deliveryDTOUpdate.getCost());
-        deliveryDTO.setName(deliveryDTOUpdate.getName());
-        deliveryDTO.setTimeDelivery(deliveryDTOUpdate.getTimeDelivery());
+        Delivery delivery = deliveryRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("delivery with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о доставке с id = " + id);
+                });
+        delivery.setCost(deliveryDTOUpdate.getCost());
+        delivery.setName(deliveryDTOUpdate.getName());
+        delivery.setTimeDelivery(deliveryDTOUpdate.getTimeDelivery());
 
         log.info("save delivery");
 
-        return toDTO(deliveryRepositoryDAO.save(toEntity(deliveryDTO)));
+        return toDTO(deliveryRepositoryDAO.save(delivery));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -74,7 +79,7 @@ public class DeliveryService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    DeliveryDTO findByID(UUID id) throws ResourceNotFoundException {
+    public DeliveryDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search delivery");
         return toDTO(deliveryRepositoryDAO
                 .findById(id)

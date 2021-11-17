@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.CustomerBasketDTO;
 import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -24,8 +25,12 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public List<ProductDTO> getAllProducts() {
-        return productControllerService.getAllProducts();
+    public  ResponseEntity<List<ProductDTO>> getAllProducts() {
+        List<ProductDTO> products = productControllerService.getAllProducts();
+        if(products.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(products);
     }
 
     @PostMapping("")
@@ -35,7 +40,11 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return new ResponseEntity<>(productControllerService.getProductById(id), HttpStatus.FOUND);
+        ProductDTO productDTO = productControllerService.getProductById(id);
+        if(productDTO==null){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(productDTO);
     }
 
     @PutMapping("/{id}")

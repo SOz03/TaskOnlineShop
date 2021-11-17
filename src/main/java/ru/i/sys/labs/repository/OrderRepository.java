@@ -14,4 +14,6 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     List<Order> findListNoPay();
 
     //TODO написать метод для получения всех оплаченых заказов без использования @Query.
+    List<Order> findAllByStatus_PaidEquals();
+
 }

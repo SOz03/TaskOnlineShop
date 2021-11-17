@@ -22,9 +22,18 @@ public class SMSMessage implements Message {
 
     @Override
     public void messageForPay() {
-        List<Order> ordersNoPay = service.findListNoPay();
+        List<Order> ordersNoPay = service.findListPaid();
         for (Order order : ordersNoPay) {
             log.warn("SMS-message || Order with ID {} no pair", order.getId());
+        }
+
+        messagePaid();
+    }
+
+    private void messagePaid() {
+        List<Order> ordersPay = service.findListNoPay();
+        for (Order order : ordersPay) {
+            log.warn("SMS-message || Order PAID with ID {} ", order.getId());
         }
     }
 }

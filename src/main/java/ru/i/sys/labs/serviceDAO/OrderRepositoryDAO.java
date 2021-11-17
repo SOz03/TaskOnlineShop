@@ -46,4 +46,9 @@ public class OrderRepositoryDAO {
         log.info("executing a database query 'findListNoPay'");
         return orderRepository.findListNoPay();
     }
+
+    public List<Order> findListPaid(){
+        log.info("executing a database query 'findListNoPay'");
+        return orderRepository.findAllByStatus_PaidEquals();
+    }
 }

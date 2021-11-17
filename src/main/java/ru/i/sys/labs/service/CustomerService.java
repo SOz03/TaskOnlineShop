@@ -45,7 +45,6 @@ public class CustomerService {
         return toDTO(customerRepositoryDAO.save(toEntity(customerDTO)));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     public CustomerDTO getCustomerById(UUID id) throws ResourceNotFoundException {
         log.info("get customer");
         return findByID(id);
@@ -53,15 +52,20 @@ public class CustomerService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerDTO updateCustomer(UUID id, CustomerDTO customerDTOUpdate) throws ResourceNotFoundException {
-        CustomerDTO customerDTO = findByID(id);
-        customerDTO.setFIO(customerDTOUpdate.getFIO());
-        customerDTO.setDateBirth(customerDTOUpdate.getDateBirth());
-        customerDTO.setPhoneNumber(customerDTOUpdate.getPhoneNumber());
-        customerDTO.setAddress(customerDTOUpdate.getAddress());
+        Customer customer = customerRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("customer with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о покупателе с id = " + id);
+                });
+        customer.setFIO(customerDTOUpdate.getFIO());
+        customer.setDateBirth(customerDTOUpdate.getDateBirth());
+        customer.setPhoneNumber(customerDTOUpdate.getPhoneNumber());
+        customer.setAddress(customerDTOUpdate.getAddress());
 
         log.info("save customer");
 
-        return toDTO(customerRepositoryDAO.save(toEntity(customerDTO)));
+        return toDTO(customerRepositoryDAO.save(customer));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -72,7 +76,7 @@ public class CustomerService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    CustomerDTO findByID(UUID id) throws ResourceNotFoundException {
+    public CustomerDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search customer");
         return toDTO(customerRepositoryDAO
                 .findById(id)

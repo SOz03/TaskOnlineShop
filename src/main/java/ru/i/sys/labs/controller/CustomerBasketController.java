@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.BasketProductDTO;
 import ru.i.sys.labs.dto.CustomerBasketDTO;
 import ru.i.sys.labs.entity.CustomerBasket;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -24,8 +25,12 @@ public class CustomerBasketController {
     }
 
     @GetMapping("")
-    public List<CustomerBasketDTO> getAllCustomerBaskets() {
-        return customerBasketControllerService.getAllCustomerBaskets();
+    public  ResponseEntity<List<CustomerBasketDTO>> getAllCustomerBaskets() {
+        List<CustomerBasketDTO> allBasketProducts = customerBasketControllerService.getAllCustomerBaskets();
+        if(allBasketProducts.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(allBasketProducts);
     }
 
     @PostMapping("")
@@ -35,7 +40,11 @@ public class CustomerBasketController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerBasketDTO> getCustomerBasketById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return new ResponseEntity<>(customerBasketControllerService.getCustomerBasketById(id), HttpStatus.FOUND);
+        CustomerBasketDTO customerBasketDTO = customerBasketControllerService.getCustomerBasketById(id);
+        if(customerBasketDTO==null){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(customerBasketDTO);
     }
 
     @PutMapping("/{id}")

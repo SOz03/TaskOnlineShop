@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.dto.CustomerBasketDTO;
-import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.CustomerBasket;
-import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.CustomerBasketRepositoryDAO;
 
@@ -46,7 +44,7 @@ public class CustomerBasketService {
         return toDTO(customerBasketRepositoryDAO.save(toEntity(customerBasketDTO)));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+
     public CustomerBasketDTO getCustomerBasketById(UUID id) throws ResourceNotFoundException {
         log.info("get customer basket");
         return findByID(id);
@@ -54,12 +52,18 @@ public class CustomerBasketService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerBasketDTO updateCustomerBasket(UUID id, CustomerBasketDTO customerBasketDTOUpdate) throws ResourceNotFoundException {
-        CustomerBasketDTO customerBasketDTO = findByID(id);
-        customerBasketDTO.setCustomer(customerBasketDTOUpdate.getCustomer());
+        CustomerBasket customerBasket = customerBasketRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("customer basket with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о корзине покупателя с id = " + id);
+                });
+
+        customerBasket.setCustomer(customerBasketDTOUpdate.getCustomer());
 
         log.info("save customer basket");
 
-        return toDTO(customerBasketRepositoryDAO.save(toEntity(customerBasketDTO)));
+        return toDTO(customerBasketRepositoryDAO.save(customerBasket));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -70,7 +74,7 @@ public class CustomerBasketService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    CustomerBasketDTO findByID(UUID id) throws ResourceNotFoundException {
+    public CustomerBasketDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search customer basket");
         return toDTO(customerBasketRepositoryDAO
                 .findById(id)

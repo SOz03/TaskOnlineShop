@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.i.sys.labs.dto.CustomerBasketDTO;
 import ru.i.sys.labs.dto.OrderDTO;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
@@ -23,8 +24,12 @@ public class OrderController {
     }
 
     @GetMapping("")
-    public List<OrderDTO> getAllOrders() {
-        return orderControllerService.getAllOrders();
+    public  ResponseEntity<List<OrderDTO>> getAllOrders() {
+        List<OrderDTO> allOrders = orderControllerService.getAllOrders();
+        if(allOrders.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(allOrders);
     }
 
     @PostMapping("")
@@ -34,7 +39,11 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDTO> getOrderById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return new ResponseEntity<>(orderControllerService.getOrderById(id), HttpStatus.FOUND);
+        OrderDTO orderDTO = orderControllerService.getOrderById(id);
+        if(orderDTO==null){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(orderDTO);
     }
 
     @PutMapping("/{id}")
