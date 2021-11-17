@@ -1,14 +1,10 @@
 package ru.i.sys.labs.entity;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "customer_baskets")
-public class CustomerBasket {
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+public class CustomerBasket extends BaseEntity {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "customers_id")
@@ -18,16 +14,7 @@ public class CustomerBasket {
     }
 
     public CustomerBasket(Customer customer) {
-        this.id = UUID.randomUUID();
         this.customer = customer;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public Customer getCustomer() {

@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.i.sys.labs.configuration.Property;
+import ru.i.sys.labs.configuration.ScheduledSettings;
 import ru.i.sys.labs.dto.OrderDTO;
-import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Order;
-import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.entity.StatusPay;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
@@ -29,15 +27,15 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService {
 
-    private final Property property;
+    private final ScheduledSettings scheduledSettings;
     private final SchedulerService scheduler;
     private final OrderRepositoryDAO orderRepositoryDAO;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public OrderService(Property property, OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler,
+    public OrderService(ScheduledSettings scheduledSettings, OrderRepositoryDAO orderRepositoryDAO, SchedulerService scheduler,
                         ModelMapper modelMapper) {
-        this.property = property;
+        this.scheduledSettings = scheduledSettings;
         this.orderRepositoryDAO = orderRepositoryDAO;
         this.scheduler = scheduler;
         this.modelMapper = modelMapper;
@@ -59,7 +57,7 @@ public class OrderService {
         OrderDTO orderResponse = toDTO(orderRepositoryDAO.save(order));
 
         //QUARTZ
-        if (property.isPayQ()) {
+        if (scheduledSettings.isPayQ()) {
             TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
             scheduler.schedule(PayOrderTimer.class, order, info);
         }
@@ -117,7 +115,7 @@ public class OrderService {
 
         if (order.getStatus().equals(StatusPay.NOT_PAID)) {
             if (sum.equals(order.getCost())) {
-                if (property.isPayQ()) {
+                if (scheduledSettings.isPayQ()) {
                     if (nowDate.before(calendar.getTime())) {
                         order.setStatus(StatusPay.PAID);
                         updateOrder(orderId, toDTO(order));

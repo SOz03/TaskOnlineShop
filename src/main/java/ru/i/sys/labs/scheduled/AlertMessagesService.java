@@ -7,14 +7,14 @@ import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
 
 import java.util.List;
 
-//TODO Название сервиса не несет никакой смысловой нагрузки. с тем же успехом можно было назвать blablaService
+//TODO :D Название сервиса не несет никакой смысловой нагрузки. с тем же успехом можно было назвать blablaService
 @Service
-public class SchedService {
+public class AlertMessagesService {
 
     private final OrderRepositoryDAO orderRepositoryDAO;
 
     @Autowired
-    public SchedService(OrderRepositoryDAO orderRepositoryDAO) {
+    public AlertMessagesService(OrderRepositoryDAO orderRepositoryDAO) {
         this.orderRepositoryDAO = orderRepositoryDAO;
     }
 

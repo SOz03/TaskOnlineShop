@@ -1,17 +1,12 @@
 package ru.i.sys.labs.entity;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "baskets_products")
-public class BasketProduct {
+public class BasketProduct extends BaseEntity {
 
-
-    //TODO хорошая практика когда есть BaseEntity в которой есть общие аттрибуты типа id
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+    //TODO ++++ хорошая практика когда есть BaseEntity в которой есть общие аттрибуты типа id
 
     @Column(name = "count_product")
     private Integer countProduct;
@@ -33,19 +28,10 @@ public class BasketProduct {
 
     public BasketProduct(Product product, CustomerBasket customerBasket,
                          Integer countProduct, Order order) {
-        this.id = UUID.randomUUID();
         this.product = product;
         this.customerBasket = customerBasket;
         this.countProduct = countProduct;
         this.order = order;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public Product getProduct() {

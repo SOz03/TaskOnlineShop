@@ -3,14 +3,10 @@ package ru.i.sys.labs.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
-public class Order {
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+public class Order extends BaseEntity {
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -30,19 +26,10 @@ public class Order {
     }
 
     public Order(Delivery delivery, BigDecimal cost, Date date, StatusPay status) {
-        this.id = UUID.randomUUID();
         this.delivery = delivery;
         this.cost = cost;
         this.date = date;
         this.status = status;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public StatusPay getStatus() {

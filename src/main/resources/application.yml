@@ -16,13 +16,13 @@ spring:
   #Timer
   application:
     logback:
-     name: standardLogback
+     name: main-logback
 
     message-settings:
      enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
      message-type:
-#       payQ: false #status Quartz for pay orders (true/false)
+       payQ: false #status Quartz enabled for pay orders (true/false)
        scheduled: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)
 
 

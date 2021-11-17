@@ -46,7 +46,6 @@ public class BasketProductService {
         return toDTO(basketProductRepositoryDAO.save(toEntity(basketProductDTO)));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     public BasketProductDTO getBasketProductById(UUID id) throws ResourceNotFoundException {
         log.info("get basket product");
         return findByID(id);
@@ -55,20 +54,26 @@ public class BasketProductService {
     @Transactional(propagation = Propagation.REQUIRED)
     public BasketProductDTO updateBasketProduct(UUID id, BasketProductDTO basketProductDTOUpdate) throws ResourceNotFoundException {
         /*
-        TODO кажется именно об этом я тебе рассказывал на собеседовании.
+        TODO +++++++++ кажется именно об этом я тебе рассказывал на собеседовании.
          нельзя вызывать ТРАНЗАКЦИОНЫЙ метод из метода в рамках одного сервиса.
          Транзакция не создастся.
          ДА и вообще, здесь вполне можно использовать дао напрямую и получать сущность.
          */
-        BasketProductDTO basketProductDTO = findByID(id);
-        basketProductDTO.setOrder(basketProductDTOUpdate.getOrder());
-        basketProductDTO.setCountProduct(basketProductDTOUpdate.getCountProduct());
-        basketProductDTO.setCustomerBasket(basketProductDTOUpdate.getCustomerBasket());
-        basketProductDTO.setProduct(basketProductDTOUpdate.getProduct());
+        BasketProduct basketProduct = basketProductRepositoryDAO
+                .findById(id)
+                .orElseThrow(() -> {
+                    log.warn("basket product with id = {} not found", id);
+                    return new ResourceNotFoundException("Нет данных о продуктах в корзине с id = " + id);
+                });
+
+        basketProduct.setOrder(basketProductDTOUpdate.getOrder());
+        basketProduct.setCountProduct(basketProductDTOUpdate.getCountProduct());
+        basketProduct.setCustomerBasket(basketProductDTOUpdate.getCustomerBasket());
+        basketProduct.setProduct(basketProductDTOUpdate.getProduct());
 
         log.info("save basket product");
 
-        return toDTO(basketProductRepositoryDAO.save(toEntity(basketProductDTO)));
+        return toDTO(basketProductRepositoryDAO.save(basketProduct));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -79,7 +84,7 @@ public class BasketProductService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    BasketProductDTO findByID(UUID id) throws ResourceNotFoundException {
+    public BasketProductDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search basket product");
         return toDTO(basketProductRepositoryDAO
                 .findById(id)

@@ -2,17 +2,12 @@ package ru.i.sys.labs.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+public class Customer extends BaseEntity {
 
     @Column(name = "first_name")
     private String FIO;
@@ -31,19 +26,10 @@ public class Customer {
 
     public Customer(String FIO, String phoneNumber,
                     Date dateBirth, String address) {
-        this.id = UUID.randomUUID();
         this.FIO = FIO;
         this.phoneNumber = phoneNumber;
         this.dateBirth = dateBirth;
         this.address = address;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getFIO() {

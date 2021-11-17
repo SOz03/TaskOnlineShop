@@ -7,15 +7,14 @@ import ru.i.sys.labs.entity.Order;
 
 import java.util.List;
 
-//@ConditionalOnProperty(prefix = "spring.application.scheduled", name = "class", havingValue = "one")
 @Slf4j
 @Component
-public class MailMessage implements SchedulerMessage {
+public class MailMessage implements Message {
 
-    private final SchedService service;
+    private final AlertMessagesService service;
 
     @Autowired
-    public MailMessage(SchedService schedulerService) {
+    public MailMessage(AlertMessagesService schedulerService) {
         this.service = schedulerService;
     }
 

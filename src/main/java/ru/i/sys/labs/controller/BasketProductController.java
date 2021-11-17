@@ -10,7 +10,10 @@ import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.service.BasketProductService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+
+import static org.springframework.http.ResponseEntity.noContent;
 
 @RestController
 @RequestMapping("/api/shop/entities/basket-products")
@@ -23,10 +26,14 @@ public class BasketProductController {
         this.basketProductControllerService = basketProductControllerService;
     }
 
-    //TODO ответ API только ResponseEntity
+    //TODO + ответ API только ResponseEntity
     @GetMapping("")
-    public List<BasketProductDTO> getAllBasketProducts() {
-        return basketProductControllerService.getAllBasketProducts();
+    public  ResponseEntity<List<BasketProductDTO>> getAllBasketProducts() {
+        List<BasketProductDTO> allBasketProducts = basketProductControllerService.getAllBasketProducts();
+        if(allBasketProducts.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(allBasketProducts);
     }
 
     @PostMapping("")
@@ -34,10 +41,14 @@ public class BasketProductController {
         return new ResponseEntity<>(basketProductControllerService.createBasketProduct(basketProductDTO), HttpStatus.CREATED);
     }
 
-    //TODO почитать про HttpStatus. нельзя отдавать 302 просто так
+    //TODO + почитать про HttpStatus. нельзя отдавать 302 просто так 200 204
     @GetMapping("/{id}")
     public ResponseEntity<BasketProductDTO> getBasketProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
-        return new ResponseEntity<>(basketProductControllerService.getBasketProductById(id), HttpStatus.FOUND);
+        BasketProductDTO basketProductDTO = basketProductControllerService.getBasketProductById(id);
+        if(basketProductDTO == null){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok().body(basketProductDTO);
     }
 
     @PutMapping("/{id}")

@@ -1,10 +1,7 @@
 package ru.i.sys.labs.entity;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,10 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "delivery")
-public class Delivery {
-    @Id
-    @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+public class Delivery extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -26,21 +20,13 @@ public class Delivery {
     @Column(name = "time_delivery")
     private Date timeDelivery;
 
-    public Delivery() {}
+    public Delivery() {
+    }
 
     public Delivery(String name, BigDecimal cost, Date timeDelivery) {
-        this.id = UUID.randomUUID();
         this.name = name;
         this.cost = cost;
         this.timeDelivery = timeDelivery;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getName() {

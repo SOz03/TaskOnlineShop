@@ -7,16 +7,16 @@ import ru.i.sys.labs.entity.Order;
 
 import java.util.List;
 
-//TODO не оставляй закоментированных строк без информирования когда это раскоментировать. если тебе не нужен этот код, то никому другому он тоже не нужен
-//@ConditionalOnProperty(prefix = "spring.application.scheduled", name = "class", havingValue = "two")
+//TODO ++ не оставляй закоментированных строк без информирования когда это раскоментировать.
+// если тебе не нужен этот код, то никому другому он тоже не нужен
 @Slf4j
 @Component
-public class SMSMessage implements SchedulerMessage {
+public class SMSMessage implements Message {
 
-    private final SchedService service;
+    private final AlertMessagesService service;
 
     @Autowired
-    public SMSMessage(SchedService schedulerService) {
+    public SMSMessage(AlertMessagesService schedulerService) {
         this.service = schedulerService;
     }
 

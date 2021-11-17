@@ -7,30 +7,30 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import ru.i.sys.labs.scheduled.SchedulerMessage;
+import ru.i.sys.labs.scheduled.Message;
 
 @Configuration
 @Slf4j
-@EnableConfigurationProperties(Property.class)
+@EnableConfigurationProperties(ScheduledSettings.class)
 @EnableScheduling
 @ConditionalOnProperty(name = "spring.application.message-settings.enabled", matchIfMissing = true)
 public class ScheduleConfiguration {
 
-    private final SchedulerMessage[] schedulerMessage;
-    private final Property property;
+    private final Message[] message;
+    private final ScheduledSettings scheduledSettings;
 
     @Autowired
-    public ScheduleConfiguration(SchedulerMessage[] schedulerMessage, Property property) {
-        this.schedulerMessage = schedulerMessage;
-        this.property = property;
+    public ScheduleConfiguration(Message[] message, ScheduledSettings scheduledSettings) {
+        this.message = message;
+        this.scheduledSettings = scheduledSettings;
     }
 
     @Scheduled(cron = "${spring.application.message-settings.time}")
     public void enabledNotification() {
 
-        String[] messages = property.getScheduled().split(" ");
+        String[] messages = scheduledSettings.getScheduled().split(" ");
         for (String message : messages) {
-            for (SchedulerMessage scheduler : schedulerMessage) {
+            for (Message scheduler : this.message) {
                 if (message.equals("all")) {
                     scheduler.messageForPay();
                 } else if (message.equals(scheduler.getClass().getSimpleName())) {
