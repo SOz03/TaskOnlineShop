@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface OrderRepository extends JpaRepository<Order, UUID> {
     @Query("Select o From Order o Where o.status = 'NOT_PAID'")
     List<Order> findListNoPay();
+
+    //TODO написать метод для получения всех оплаченых заказов без использования @Query.
 }

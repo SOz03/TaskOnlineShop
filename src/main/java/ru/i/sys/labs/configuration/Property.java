@@ -2,6 +2,7 @@ package ru.i.sys.labs.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+//TODO Название сервиса не несет никакой смысловой нагрузки
 @ConfigurationProperties(prefix = "spring.application.message-settings.message-type")
 public class Property {
 

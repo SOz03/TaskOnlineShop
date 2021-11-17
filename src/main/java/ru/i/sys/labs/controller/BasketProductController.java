@@ -23,6 +23,7 @@ public class BasketProductController {
         this.basketProductControllerService = basketProductControllerService;
     }
 
+    //TODO ответ API только ResponseEntity
     @GetMapping("")
     public List<BasketProductDTO> getAllBasketProducts() {
         return basketProductControllerService.getAllBasketProducts();
@@ -33,6 +34,7 @@ public class BasketProductController {
         return new ResponseEntity<>(basketProductControllerService.createBasketProduct(basketProductDTO), HttpStatus.CREATED);
     }
 
+    //TODO почитать про HttpStatus. нельзя отдавать 302 просто так
     @GetMapping("/{id}")
     public ResponseEntity<BasketProductDTO> getBasketProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         return new ResponseEntity<>(basketProductControllerService.getBasketProductById(id), HttpStatus.FOUND);

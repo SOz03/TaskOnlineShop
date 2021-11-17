@@ -6,6 +6,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "baskets_products")
 public class BasketProduct {
+
+
+    //TODO хорошая практика когда есть BaseEntity в которой есть общие аттрибуты типа id
     @Id
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
