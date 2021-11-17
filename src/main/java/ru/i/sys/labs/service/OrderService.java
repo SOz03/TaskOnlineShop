@@ -81,6 +81,8 @@ public class OrderService {
         order.setCost(orderDTOUpdate.getCost());
         order.setDate(orderDTOUpdate.getDate());
         order.setDelivery(orderDTOUpdate.getDelivery());
+        order.setStatus(orderDTOUpdate.getStatus());
+
         log.info("save order");
 
         return toDTO(orderRepositoryDAO.save(order));
@@ -95,7 +97,7 @@ public class OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public OrderDTO findByID(UUID id) throws ResourceNotFoundException {
-        log.info("Search order");
+        log.info("Search order {}", id);
         Order order = orderRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> {

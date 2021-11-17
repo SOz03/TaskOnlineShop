@@ -23,6 +23,6 @@ public class AlertMessagesService {
     }
 
     public List<Order> findListPaid(){
-        return orderRepositoryDAO.findListNoPay();
+        return orderRepositoryDAO.findListPaid();
     }
 }
