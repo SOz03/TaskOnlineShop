@@ -7,7 +7,6 @@ import ru.i.sys.labs.serviceDAO.OrderRepositoryDAO;
 
 import java.util.List;
 
-//TODO :D Название сервиса не несет никакой смысловой нагрузки. с тем же успехом можно было назвать blablaService
 @Service
 public class AlertMessagesService {
 

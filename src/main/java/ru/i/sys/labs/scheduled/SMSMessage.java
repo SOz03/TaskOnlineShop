@@ -7,8 +7,6 @@ import ru.i.sys.labs.entity.Order;
 
 import java.util.List;
 
-//TODO ++ не оставляй закоментированных строк без информирования когда это раскоментировать.
-// если тебе не нужен этот код, то никому другому он тоже не нужен
 @Slf4j
 @Component
 public class SMSMessage implements Message {

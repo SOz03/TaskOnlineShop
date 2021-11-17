@@ -53,12 +53,7 @@ public class BasketProductService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public BasketProductDTO updateBasketProduct(UUID id, BasketProductDTO basketProductDTOUpdate) throws ResourceNotFoundException {
-        /*
-        TODO +++++++++ кажется именно об этом я тебе рассказывал на собеседовании.
-         нельзя вызывать ТРАНЗАКЦИОНЫЙ метод из метода в рамках одного сервиса.
-         Транзакция не создастся.
-         ДА и вообще, здесь вполне можно использовать дао напрямую и получать сущность.
-         */
+
         BasketProduct basketProduct = basketProductRepositoryDAO
                 .findById(id)
                 .orElseThrow(() -> {

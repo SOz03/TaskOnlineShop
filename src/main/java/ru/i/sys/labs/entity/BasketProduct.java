@@ -6,8 +6,6 @@ import javax.persistence.*;
 @Table(name = "baskets_products")
 public class BasketProduct extends BaseEntity {
 
-    //TODO ++++ хорошая практика когда есть BaseEntity в которой есть общие аттрибуты типа id
-
     @Column(name = "count_product")
     private Integer countProduct;
 
