@@ -21,6 +21,8 @@ spring:
     message-settings:
      enabled: true #status for pay orders (true/false)
      time: 0 * * ? * *
+     time-birthday: 0 * * ? * *
+#0 10 * ? * *
      message-type:
        payQ: false #status Quartz enabled for pay orders (true/false)
        scheduled: MailMessage SMSMessage #(MailMessage/SMSMessage/all/MailMessage SMSMessage)

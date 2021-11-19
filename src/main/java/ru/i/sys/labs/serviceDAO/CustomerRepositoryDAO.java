@@ -2,6 +2,7 @@ package ru.i.sys.labs.serviceDAO;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.i.sys.labs.entity.Customer;
 import ru.i.sys.labs.repository.CustomerRepository;
@@ -24,6 +25,11 @@ public class CustomerRepositoryDAO {
     public List<Customer> findAll() {
         log.info("executing a database query 'findAll'");
         return customerRepository.findAll();
+    }
+
+    public List<Customer> findAll(Specification<Customer> specification){
+        log.info("executing a database query 'findAll' and specification {}", specification.getClass());
+        return customerRepository.findAll(specification);
     }
 
     public Customer save(Customer customer) {

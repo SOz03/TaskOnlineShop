@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import ru.i.sys.labs.scheduled.BirthdayMessage;
 import ru.i.sys.labs.scheduled.Message;
 
 @Configuration
@@ -18,11 +19,19 @@ public class ScheduleConfiguration {
 
     private final Message[] message;
     private final ScheduledSettings scheduledSettings;
+    private final BirthdayMessage birthdayMessage;
 
     @Autowired
-    public ScheduleConfiguration(Message[] message, ScheduledSettings scheduledSettings) {
+    public ScheduleConfiguration(Message[] message, ScheduledSettings scheduledSettings,
+                                 BirthdayMessage birthdayMessage) {
         this.message = message;
         this.scheduledSettings = scheduledSettings;
+        this.birthdayMessage = birthdayMessage;
+    }
+
+    @Scheduled(cron = "${spring.application.message-settings.time-birthday}")
+    public void congratulate() {
+        birthdayMessage.sendMessage();
     }
 
     @Scheduled(cron = "${spring.application.message-settings.time}")
@@ -32,9 +41,9 @@ public class ScheduleConfiguration {
         for (String message : messages) {
             for (Message scheduler : this.message) {
                 if (message.equals("all")) {
-                    scheduler.messageForPay();
+                    scheduler.sendMessage();
                 } else if (message.equals(scheduler.getClass().getSimpleName())) {
-                    scheduler.messageForPay();
+                    scheduler.sendMessage();
                     break;
                 }
             }

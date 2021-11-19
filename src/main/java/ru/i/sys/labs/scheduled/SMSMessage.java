@@ -19,7 +19,7 @@ public class SMSMessage implements Message {
     }
 
     @Override
-    public void messageForPay() {
+    public void sendMessage() {
         List<Order> ordersNoPay = service.findListNoPay();
 
         for (Order order : ordersNoPay) {
@@ -32,7 +32,7 @@ public class SMSMessage implements Message {
     private void messagePaid() {
         List<Order> ordersPay = service.findListPaid();
         for (Order order : ordersPay) {
-            log.warn("SMS-message || Order PAID with ID {} ", order.getId());
+            log.info("SMS-message || Order PAID with ID {} ", order.getId());
         }
     }
 }

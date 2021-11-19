@@ -19,7 +19,7 @@ public class MailMessage implements Message {
     }
 
     @Override
-    public void messageForPay() {
+    public void sendMessage() {
         List<Order> ordersNoPay = service.findListNoPay();
         for (Order order : ordersNoPay) {
             log.warn("Mail-message || Order with ID {} no pair", order.getId());

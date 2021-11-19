@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import ru.i.sys.labs.entity.Order;
 import ru.i.sys.labs.entity.StatusPay;
 
-import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.UUID;
 
