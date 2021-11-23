@@ -55,16 +55,19 @@ public class OrderService {
     public OrderDTO createOrder(Order order) {
         log.info("starting product creation");
         OrderDTO orderResponse = toDTO(orderRepositoryDAO.save(order));
-
-        //QUARTZ
-        if (scheduledSettings.isPayQ()) {
-            TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
-            scheduler.schedule(PayOrderTimer.class, order, info);
-        }
+        startTimer(order);//QUARTZ
 
         return orderResponse;
     }
 
+    private void startTimer(Order order){
+        if (scheduledSettings.isPayQ()) {
+            TimerInfo info = new TimerInfo(3600000L, new Date(), 1);
+            scheduler.schedule(PayOrderTimer.class, order, info);
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     public OrderDTO getOrderById(UUID id) throws ResourceNotFoundException {
         log.info("get order");
         return findByID(id);
@@ -82,7 +85,6 @@ public class OrderService {
         order.setDate(orderDTOUpdate.getDate());
         order.setDelivery(orderDTOUpdate.getDelivery());
         order.setStatus(orderDTOUpdate.getStatus());
-
         log.info("save order");
 
         return toDTO(orderRepositoryDAO.save(order));
@@ -95,8 +97,8 @@ public class OrderService {
         log.info("finished delete order by id");
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public OrderDTO findByID(UUID id) throws ResourceNotFoundException {
+
+    private OrderDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search order {}", id);
         Order order = orderRepositoryDAO
                 .findById(id)

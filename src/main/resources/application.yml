@@ -4,7 +4,7 @@ spring:
 
   # Database
   datasource:
-    url: jdbc:postgresql://localhost:5432/shop_db?currentSchema=shop
+    url: jdbc:postgresql://localhost:5433/shop_db?currentSchema=shop
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 080801
@@ -20,8 +20,8 @@ spring:
 
     message-settings:
      enabled: true #status for pay orders (true/false)
-     time: 0 * * ? * *
-     time-birthday: 0 * * ? * *
+     time: 0 0 * ? * *
+     time-birthday: 0 10 * ? * *
 #0 10 * ? * *
      message-type:
        payQ: false #status Quartz enabled for pay orders (true/false)
