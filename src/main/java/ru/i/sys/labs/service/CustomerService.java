@@ -3,16 +3,17 @@ package ru.i.sys.labs.service;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.i.sys.labs.dto.CustomerDTO;
-import ru.i.sys.labs.dto.ProductDTO;
 import ru.i.sys.labs.entity.Customer;
-import ru.i.sys.labs.entity.Product;
 import ru.i.sys.labs.exception.ResourceNotFoundException;
 import ru.i.sys.labs.serviceDAO.CustomerRepositoryDAO;
+import ru.i.sys.labs.specification.CustomerSpecification;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,18 +22,25 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerService {
 
-    private final CustomerRepositoryDAO customerRepositoryDAO;
+    private final CustomerRepositoryDAO customerRepo;
     private final ModelMapper modelMapper;
 
     @Autowired
     public CustomerService(CustomerRepositoryDAO customerRepositoryDAO, ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-        this.customerRepositoryDAO = customerRepositoryDAO;
+        this.customerRepo = customerRepositoryDAO;
+    }
+
+    public List<Customer> findBirthday() {
+        Date today = new Date();
+        Specification<Customer> specification = Specification.where(CustomerSpecification.customerHasBirthday(today));
+
+        return customerRepo.findAll(specification);
     }
 
     public List<CustomerDTO> getAllCustomers() {
         log.info("list customers");
-        return customerRepositoryDAO
+        return customerRepo
                 .findAll()
                 .stream()
                 .map(this::toDTO)
@@ -42,7 +50,7 @@ public class CustomerService {
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
         log.info("starting customer creation");
-        return toDTO(customerRepositoryDAO.save(toEntity(customerDTO)));
+        return toDTO(customerRepo.save(toEntity(customerDTO)));
     }
 
     public CustomerDTO getCustomerById(UUID id) throws ResourceNotFoundException {
@@ -50,9 +58,20 @@ public class CustomerService {
         return findByID(id);
     }
 
+    public CustomerDTO getCustomerByPhoneNumber(String phoneNumber) throws ResourceNotFoundException {
+        log.info("get customer");
+        Customer customer = customerRepo.getCustomerByPhoneNumber(phoneNumber).orElseThrow(() -> {
+            log.warn("customer with prone {} not found", phoneNumber);
+
+            return new ResourceNotFoundException("Нет данных о покупателе с номером телефона  " + phoneNumber);
+        });
+
+        return toDTO(customer);
+    }
+
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerDTO updateCustomer(UUID id, CustomerDTO customerDTOUpdate) throws ResourceNotFoundException {
-        Customer customer = customerRepositoryDAO
+        Customer customer = customerRepo
                 .findById(id)
                 .orElseThrow(() -> {
                     log.warn("customer with id = {} not found", id);
@@ -65,20 +84,20 @@ public class CustomerService {
 
         log.info("save customer");
 
-        return toDTO(customerRepositoryDAO.save(customer));
+        return toDTO(customerRepo.save(customer));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteCustomer(UUID id) {
         log.info("starting delete customer by id");
-        customerRepositoryDAO.deleteById(id);
+        customerRepo.deleteById(id);
         log.info("finished delete customer by id");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerDTO findByID(UUID id) throws ResourceNotFoundException {
         log.info("Search customer");
-        return toDTO(customerRepositoryDAO
+        return toDTO(customerRepo
                 .findById(id)
                 .orElseThrow(() -> {
                     log.warn("customer with id = {} not found", id);

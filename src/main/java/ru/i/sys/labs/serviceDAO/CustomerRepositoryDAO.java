@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.i.sys.labs.dto.CustomerDTO;
 import ru.i.sys.labs.entity.Customer;
 import ru.i.sys.labs.repository.CustomerRepository;
 
@@ -46,5 +47,10 @@ public class CustomerRepositoryDAO {
         log.info("executing a database query 'deleteById'");
         customerRepository.deleteById(id);
         log.info("data received");
+    }
+
+    public Optional<Customer> getCustomerByPhoneNumber(String phoneNumber) {
+        log.info("executing a database query 'getCustomerByPhoneNumber'");
+        return customerRepository.getCustomerByPhoneNumber(phoneNumber);
     }
 }

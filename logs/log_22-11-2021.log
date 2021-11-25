@@ -1,0 +1,55 @@
+16:40:19.520 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 7308 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
+16:40:19.523 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
+16:40:20.676 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+16:40:20.772 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Finished Spring Data repository scanning in 84 ms. Found 6 JPA repository interfaces.
+16:40:21.442 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat initialized with port(s): 8080 (http)
+16:40:21.452 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Initializing ProtocolHandler ["http-nio-8080"]
+16:40:21.452 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Starting service [Tomcat]
+16:40:21.453 [main] INFO  o.a.catalina.core.StandardEngine main-logback [] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+16:40:21.558 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring embedded WebApplicationContext
+16:40:21.558 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext main-logback [] - Root WebApplicationContext: initialization completed in 1961 ms
+16:40:21.734 [main] INFO  o.f.c.i.license.VersionPrinter main-logback [] - Flyway Community Edition 7.7.3 by Redgate
+16:40:21.747 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Starting...
+16:40:21.889 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Start completed.
+16:40:21.927 [main] INFO  o.f.c.i.database.base.DatabaseType main-logback [] - Database: jdbc:postgresql://localhost:5433/shop_db (PostgreSQL 13.5)
+16:40:21.974 [main] INFO  o.f.core.internal.command.DbValidate main-logback [] - Successfully validated 7 migrations (execution time 00:00.028s)
+16:40:21.981 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Current version of schema "shop": 2.1
+16:40:21.982 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Schema "shop" is up to date. No migration necessary.
+16:40:22.153 [main] INFO  o.h.jpa.internal.util.LogHelper main-logback [] - HHH000204: Processing PersistenceUnitInfo [name: default]
+16:40:22.223 [main] INFO  org.hibernate.Version main-logback [] - HHH000412: Hibernate ORM core version 5.4.32.Final
+16:40:22.451 [main] INFO  o.h.annotations.common.Version main-logback [] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+16:40:22.601 [main] INFO  org.hibernate.dialect.Dialect main-logback [] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+16:40:23.240 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator main-logback [] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+16:40:23.250 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+16:40:24.043 [main] INFO  org.quartz.impl.StdSchedulerFactory main-logback [] - Using default implementation for ThreadExecutor
+16:40:24.057 [main] INFO  o.quartz.core.SchedulerSignalerImpl main-logback [] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+16:40:24.058 [main] INFO  org.quartz.core.QuartzScheduler main-logback [] - Quartz Scheduler v.2.2.1 created.
+16:40:24.059 [main] INFO  org.quartz.simpl.RAMJobStore main-logback [] - RAMJobStore initialized.
+16:40:24.060 [main] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+16:40:24.061 [main] INFO  org.quartz.impl.StdSchedulerFactory main-logback [] - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+16:40:24.061 [main] INFO  org.quartz.impl.StdSchedulerFactory main-logback [] - Quartz scheduler version: 2.2.1
+16:40:24.062 [main] INFO  org.quartz.core.QuartzScheduler main-logback [] - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4f571c0e
+16:40:24.066 [main] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+16:40:24.396 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration main-logback [] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+16:40:24.559 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping main-logback [] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+16:40:24.852 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Starting ProtocolHandler ["http-nio-8080"]
+16:40:24.871 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat started on port(s): 8080 (http) with context path ''
+16:40:24.873 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper main-logback [] - Context refreshed
+16:40:24.898 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper main-logback [] - Found 1 custom documentation plugin(s)
+16:40:24.945 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner main-logback [] - Scanning for api listing references
+16:40:25.244 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 6.4 seconds (JVM running for 8.655)
+16:40:28.703 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+16:40:28.735 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+16:40:28.736 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+16:40:28.736 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+16:40:28.736 [SpringApplicationShutdownHook] INFO  o.s.s.quartz.SchedulerFactoryBean main-logback [] - Shutting down Quartz Scheduler
+16:40:28.738 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
+16:40:28.741 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
+16:40:28.747 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.

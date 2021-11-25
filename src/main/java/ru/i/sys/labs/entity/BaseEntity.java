@@ -1,10 +1,18 @@
 package ru.i.sys.labs.entity;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.UUID;
 
+
+@AllArgsConstructor
+@ToString
+@Setter
+@Getter
+@EqualsAndHashCode
 @MappedSuperclass
 public abstract class BaseEntity {
 
@@ -16,11 +24,4 @@ public abstract class BaseEntity {
         this.id = UUID.randomUUID();
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 }

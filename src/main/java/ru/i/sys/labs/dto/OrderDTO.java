@@ -6,6 +6,8 @@ import ru.i.sys.labs.entity.StatusPay;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -21,5 +23,5 @@ public class OrderDTO {
     private StatusPay status;
     private Delivery delivery;
     private BigDecimal cost;
-    private Date date;
+    private LocalDate date;
 }
