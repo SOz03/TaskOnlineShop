@@ -1,6 +1,8 @@
 # Spring Boot configuration
 
 spring:
+  jpa:
+    open-in-view: false
 
   # Database
   datasource:
@@ -26,6 +28,9 @@ spring:
       mail:
         time: 0 * * ? * *
         prefix: Mail || -
+      social:
+        time: 0 * * ? * *
+        prefix: ВКОНТАКТЕ || -
 
       send:
         orders-unpaid:
@@ -33,15 +38,15 @@ spring:
           how:
         happy-birthday:
           enabled: true
-          how:
+          how: mail
         orders-paid:
           enabled: true
-          how:
+          how: sms
         message:
           enabled: true
           recipient: 89278911111
-          text: hello all!
-          how: sms mail
+          text: hello !
+          how: social
 
 
 

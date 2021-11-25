@@ -15,4 +15,7 @@ public class GeneralProperty extends Property {
 
     @Value("${spring.application.notification.mail.prefix}")
     private String mailPrefix;
+
+    @Value("${spring.application.notification.social.prefix}")
+    private String socialPrefix;
 }

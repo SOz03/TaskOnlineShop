@@ -59,7 +59,7 @@ public class NotificationService {
             }
         }
 
-        if ((messageProperty.isEnabled()) && (property.isEnabled())) {
+        if ((messageProperty.isEnabled()) && (property.isEnabled()) && !messageProperty.getText().equals("")) {
             String[] messages = messageProperty.getHow().split(" ");
             for (String message : messages) {
                 if (message.equals(variation) && messageProperty.getRecipient().equals("")) {
@@ -69,7 +69,7 @@ public class NotificationService {
                     try {
                         customerDTO = customerService.getCustomerByPhoneNumber(messageProperty.getRecipient());
                         message(prefix, messageProperty.getText(), customerDTO.getFIO());
-                    } catch (ResourceNotFoundException exception){
+                    } catch (ResourceNotFoundException exception) {
                         log.warn("покупатель с таким номером не найден");
                     }
 
@@ -104,7 +104,7 @@ public class NotificationService {
     }
 
     private void message(String prefix, String text, String recipient) {
-        log.info("Здравствуйте, {}", recipient);
+        log.info("{}Здравствуйте, {}", prefix,recipient);
         log.info("{} {}", prefix, text);
     }
 
