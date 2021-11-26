@@ -1,5 +1,6 @@
 package ru.i.sys.labs.serviceDAO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -13,15 +14,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class CustomerRepositoryDAO {
 
     private final CustomerRepository customerRepository;
-
-    @Autowired
-    public CustomerRepositoryDAO(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
 
     public List<Customer> findAll() {
         log.info("executing a database query 'findAll'");

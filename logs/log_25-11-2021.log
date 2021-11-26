@@ -49,7 +49,7 @@
 09:17:00.005 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -66,7 +66,7 @@ java.lang.NullPointerException: null
 09:17:00.008 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -139,7 +139,7 @@ java.lang.NullPointerException: null
 09:19:00.115 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -156,7 +156,7 @@ java.lang.NullPointerException: null
 09:19:00.118 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -229,7 +229,7 @@ java.lang.NullPointerException: null
 09:21:00.189 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:34)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -246,7 +246,7 @@ java.lang.NullPointerException: null
 09:21:00.194 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:34)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -649,7 +649,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 0 of constructor in ru.i.sys.labs.messages.MailNotification required a bean of type 'ru.i.sys.labs.messages.NotificationService' that could not be found.
+Parameter 0 of constructor in ru.i.sys.labs.messages.sender.MailNotification required a bean of type 'ru.i.sys.labs.messages.NotificationService' that could not be found.
 
 
 Action:
@@ -1667,7 +1667,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [PAI
 	at ru.i.sys.labs.service.OrderService$$EnhancerBySpringCGLIB$$3316bfb4.findListPaid(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.listPaidOrders(NotificationService.java:89)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:46)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:20)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1753,7 +1753,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [PAI
 	at ru.i.sys.labs.service.OrderService$$EnhancerBySpringCGLIB$$3316bfb4.findListPaid(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.listPaidOrders(NotificationService.java:89)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:46)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:20)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1839,7 +1839,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [PAI
 	at ru.i.sys.labs.service.OrderService$$EnhancerBySpringCGLIB$$3316bfb4.findListPaid(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.listPaidOrders(NotificationService.java:89)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:46)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:20)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2671,7 +2671,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2724,7 +2724,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2833,7 +2833,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2886,7 +2886,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2939,7 +2939,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2992,7 +2992,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3045,7 +3045,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3098,7 +3098,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d9ac068f.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:68)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3207,7 +3207,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d2f178e7.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:70)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:21)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3260,7 +3260,7 @@ org.springframework.core.convert.ConverterNotFoundException: No converter found 
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
 	at ru.i.sys.labs.service.CustomerService$$EnhancerBySpringCGLIB$$d2f178e7.getCustomerByPhoneNumber(<generated>)
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:70)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:20)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

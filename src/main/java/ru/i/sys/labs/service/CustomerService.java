@@ -1,5 +1,6 @@
 package ru.i.sys.labs.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class CustomerService {
 
     private final CustomerRepositoryDAO customerRepo;
     private final ModelMapper modelMapper;
-
-    @Autowired
-    public CustomerService(CustomerRepositoryDAO customerRepositoryDAO, ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-        this.customerRepo = customerRepositoryDAO;
-    }
 
     public List<Customer> findBirthday() {
         Date today = new Date();

@@ -33,8 +33,8 @@ public class OrderController {
     }
 
     @PostMapping("")
-    public ResponseEntity<OrderDTO> createOrder(@RequestBody Order order) {
-        return new ResponseEntity<>(orderControllerService.createOrder(order), HttpStatus.CREATED);
+    public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderDTO orderDTO) {
+        return new ResponseEntity<>(orderControllerService.createOrder(orderDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -48,8 +48,8 @@ public class OrderController {
 
     @PutMapping("/{id}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable(value = "id") UUID id,
-                                             @RequestBody OrderDTO orderUpdate) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(orderControllerService.updateOrder(id, orderUpdate));
+                                             @RequestBody OrderDTO orderDTOUpdate) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(orderControllerService.updateOrder(id, orderDTOUpdate));
     }
 
     @DeleteMapping("/{id}")

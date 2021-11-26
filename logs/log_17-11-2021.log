@@ -62,17 +62,17 @@
 01:20:46.756 [http-nio-8080-exec-7] INFO  ru.i.sys.labs.service.ProductService standardLogback [] - list products
 01:20:46.756 [http-nio-8080-exec-7] INFO  r.i.s.l.s.ProductRepositoryDAO standardLogback [] - executing a database query 'findAll'
 01:21:00.023 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO standardLogback [] - executing a database query 'findListNoPay'
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification standardLogback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification standardLogback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification standardLogback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification standardLogback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification standardLogback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification standardLogback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification standardLogback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification standardLogback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification standardLogback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification standardLogback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 01:21:00.101 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO standardLogback [] - executing a database query 'findListNoPay'
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification standardLogback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification standardLogback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification standardLogback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification standardLogback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification standardLogback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification standardLogback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification standardLogback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification standardLogback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification standardLogback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+01:21:00.101 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification standardLogback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 15:02:41.165 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 1.8.0_271 on WIN-KCQUVQLO9F3 with PID 768 (C:\Users\Albion\Desktop\Task\TaskOnlineShop\target\classes started by Albion in C:\Users\Albion\Desktop\Task\TaskOnlineShop)
 15:02:41.184 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
 15:02:42.978 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -122,17 +122,17 @@
 15:02:49.595 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner main-logback [] - Scanning for api listing references
 15:02:50.289 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 10.592 seconds (JVM running for 13.062)
 15:03:00.002 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-15:03:00.150 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.150 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.151 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 15:03:00.152 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.158 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-15:03:00.158 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.157 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.158 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+15:03:00.158 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 15:03:01.841 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 15:03:01.842 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet main-logback [] - Initializing Servlet 'dispatcherServlet'
 15:03:01.843 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet main-logback [] - Completed initialization in 1 ms
@@ -628,56 +628,56 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:35:48.400 [http-nio-8080-exec-2] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'save'
 16:35:48.428 [http-nio-8080-exec-2] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment finished
 16:36:00.002 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.066 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.065 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.066 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:36:00.066 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:36:00.070 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.070 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:36:00.071 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:36:00.071 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:37:00.000 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:37:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:37:00.022 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:37:00.029 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.029 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:37:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:37:00.031 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:38:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.009 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.009 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.009 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.009 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:38:00.009 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:38:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:38:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:38:00.016 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:39:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:39:00.012 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.014 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.012 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.014 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:39:00.018 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:39:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.034 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.035 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:39:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.034 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.035 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:39:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:39:00.037 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:39:10.484 [http-nio-8080-exec-5] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment started
 16:39:10.485 [http-nio-8080-exec-5] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Search order
@@ -735,17 +735,17 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:41:49.926 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner main-logback [] - Scanning for api listing references
 16:41:50.359 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 11.175 seconds (JVM running for 13.643)
 16:42:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:42:00.164 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.164 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.164 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.164 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.165 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:42:00.165 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:42:00.171 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.171 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.171 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.171 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:42:00.172 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:42:00.172 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:42:04.570 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 16:42:04.570 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet main-logback [] - Initializing Servlet 'dispatcherServlet'
@@ -763,17 +763,17 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:42:54.737 [http-nio-8080-exec-3] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Wrong amount
 16:42:54.737 [http-nio-8080-exec-3] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment finished
 16:43:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:43:00.024 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.025 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.026 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.027 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.027 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.024 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.025 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.026 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.027 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.027 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:43:00.027 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:43:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.037 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.037 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:43:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:43:00.039 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:43:19.883 [http-nio-8080-exec-4] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment started
 16:43:19.884 [http-nio-8080-exec-4] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Search order 20000002-ab7a-4347-8319-12bead48ea8d
@@ -783,56 +783,56 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:43:19.890 [http-nio-8080-exec-4] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'save'
 16:43:19.891 [http-nio-8080-exec-4] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment finished
 16:44:00.003 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:44:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:44:00.020 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:44:00.035 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.037 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:44:00.039 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.035 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.036 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.037 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.038 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:44:00.039 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:44:00.040 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:45:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:45:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.014 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.014 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:45:00.018 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:45:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:45:00.034 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:45:00.034 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:45:00.034 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:46:00.002 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:46:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.019 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.020 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.021 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:46:00.022 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:46:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:46:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:46:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:46:00.034 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:47:00.003 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:47:00.007 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.007 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.008 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:47:00.008 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:47:00.013 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:47:00.014 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:47:30.388 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 1.8.0_271 on WIN-KCQUVQLO9F3 with PID 6080 (C:\Users\Albion\Desktop\Task\TaskOnlineShop\target\classes started by Albion in C:\Users\Albion\Desktop\Task\TaskOnlineShop)
 16:47:30.396 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
@@ -883,17 +883,17 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:47:37.649 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner main-logback [] - Scanning for api listing references
 16:47:37.989 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 9.084 seconds (JVM running for 11.172)
 16:48:00.001 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:48:00.115 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.115 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.116 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:48:00.117 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:48:00.121 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.121 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
-16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.121 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.121 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:48:00.122 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000002-ab7a-4347-8319-12bead48ea8d no pair
 16:48:00.122 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 16:48:18.774 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 16:48:18.774 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet main-logback [] - Initializing Servlet 'dispatcherServlet'
@@ -906,14 +906,14 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 16:48:18.939 [http-nio-8080-exec-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'save'
 16:48:18.970 [http-nio-8080-exec-1] INFO  ru.i.sys.labs.service.OrderService main-logback [] - Payment finished
 16:49:00.000 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:49:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.015 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.016 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.017 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.018 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
 16:49:00.019 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-16:49:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
-16:49:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.030 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000000-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.031 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000001-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.032 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000003-ab7a-4347-8319-12bead48ea8d no pair
+16:49:00.033 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order with ID 20000004-ab7a-4347-8319-12bead48ea8d no pair
 16:49:00.034 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
-16:49:00.042 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d
+16:49:00.042 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d

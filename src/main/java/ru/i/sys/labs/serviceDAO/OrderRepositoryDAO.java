@@ -1,5 +1,6 @@
 package ru.i.sys.labs.serviceDAO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,15 +13,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class OrderRepositoryDAO {
 
     private final OrderRepository orderRepository;
-
-    @Autowired
-    public OrderRepositoryDAO(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
 
     public List<Order> findAll() {
         log.info("executing a database query 'findAll'");

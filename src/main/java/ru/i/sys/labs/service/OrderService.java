@@ -60,9 +60,9 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public OrderDTO createOrder(Order order) {
+    public OrderDTO createOrder(OrderDTO orderDTO) {
         log.info("starting product creation");
-        return toDTO(orderRepo.save(order));
+        return toDTO(orderRepo.save(toEntity(orderDTO)));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -75,13 +75,7 @@ public class OrderService {
     public OrderDTO updateOrder(UUID id, OrderDTO orderDTOUpdate) throws ResourceNotFoundException {
         Order order = findByID(id);
 
-        order.setCost(orderDTOUpdate.getCost());
-        order.setDate(orderDTOUpdate.getDate());
-        order.setDelivery(orderDTOUpdate.getDelivery());
-        order.setStatus(orderDTOUpdate.getStatus());
-        log.info("save order");
-
-        return toDTO(orderRepo.save(order));
+        return toDTO(save(order, toEntity(orderDTOUpdate)));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -111,7 +105,7 @@ public class OrderService {
             if (sum.equals(order.getCost())) {
                 if (LocalDate.now().isBefore(order.getDate().plusDays(1))) {
                     order.setStatus(StatusPay.PAID);
-                    updateOrder(orderId, toDTO(order));
+                    save(order, order);
                 } else {
                     log.warn("Time out for payment");
                 }
@@ -128,5 +122,19 @@ public class OrderService {
 
     private OrderDTO toDTO(Order order) {
         return modelMapper.map(order, OrderDTO.class);
+    }
+
+    private Order toEntity(OrderDTO orderDTO) {
+        return modelMapper.map(orderDTO, Order.class);
+    }
+
+    private Order save(Order order, Order updateOrder){
+        order.setCost(updateOrder.getCost());
+        order.setDate(updateOrder.getDate());
+        order.setDelivery(updateOrder.getDelivery());
+        order.setStatus(updateOrder.getStatus());
+        log.info("save order");
+
+        return orderRepo.save(order);
     }
 }

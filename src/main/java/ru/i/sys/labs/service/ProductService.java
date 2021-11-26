@@ -1,5 +1,6 @@
 package ru.i.sys.labs.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class ProductService {
 
     private final ModelMapper modelMapper;
     private final ProductRepositoryDAO productRepositoryDAO;
-
-    @Autowired
-    public ProductService(ProductRepositoryDAO productRepositoryDAO,
-                          ModelMapper modelMapper) {
-        this.productRepositoryDAO = productRepositoryDAO;
-        this.modelMapper = modelMapper;
-    }
 
     public List<ProductDTO> getAllProducts() {
         log.info("list products");

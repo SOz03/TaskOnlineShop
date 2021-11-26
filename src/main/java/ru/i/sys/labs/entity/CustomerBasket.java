@@ -3,8 +3,8 @@ package ru.i.sys.labs.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
-@EqualsAndHashCode
 @ToString
 @Setter
 @Getter
@@ -18,4 +18,17 @@ public class CustomerBasket extends BaseEntity {
     @JoinColumn(name = "customers_id")
     private Customer customer;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CustomerBasket that = (CustomerBasket) o;
+        return Objects.equals(customer, that.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), customer);
+    }
 }

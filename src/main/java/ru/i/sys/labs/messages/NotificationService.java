@@ -32,7 +32,6 @@ public class NotificationService {
     private final GeneralProperty property;
 
     public void handler(String prefix, String variation) {
-
         checkHappyBirthdayInclusionIfOnStartProcess(prefix, variation);
         checkListUnpaidOrdersInclusionIfOnStartProcess(prefix, variation);
         checkListPaidOrdersInclusionIfOnStartProcess(prefix, variation);
@@ -86,7 +85,6 @@ public class NotificationService {
                     } catch (ResourceNotFoundException exception) {
                         log.warn("покупатель с таким номером не найден");
                     }
-
                 }
             }
         }

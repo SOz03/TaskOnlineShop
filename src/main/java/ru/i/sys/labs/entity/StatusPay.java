@@ -1,5 +1,8 @@
 package ru.i.sys.labs.entity;
 
+import lombok.*;
+
+@ToString
 public enum StatusPay {
 
     PAID("Оплачен"),

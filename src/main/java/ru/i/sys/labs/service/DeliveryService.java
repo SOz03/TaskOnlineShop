@@ -1,5 +1,6 @@
 package ru.i.sys.labs.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,12 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class DeliveryService {
 
     private final DeliveryRepositoryDAO deliveryRepositoryDAO;
     private final ModelMapper modelMapper;
-
-    @Autowired
-    public DeliveryService(DeliveryRepositoryDAO deliveryRepositoryDAO,
-                           ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-        this.deliveryRepositoryDAO = deliveryRepositoryDAO;
-    }
 
     public List<DeliveryDTO> getAllDelivery() {
         log.info("list delivery");

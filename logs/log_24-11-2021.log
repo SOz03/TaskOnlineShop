@@ -227,14 +227,14 @@ Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled metho
 11:27:25.365 [main] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED started.
 11:27:25.399 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 12.49 seconds (JVM running for 14.2)
 11:28:00.017 [scheduling-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1162/0x00000008013e1840
-11:28:00.061 [scheduling-1] INFO  ru.i.sys.labs.messages.MailNotification main-logback [] - Mail-message || Unfortunately, nobody has a birthday today.
+11:28:00.061 [scheduling-1] INFO  ru.i.sys.labs.messages.sender.MailNotification main-logback [] - Mail-message || Unfortunately, nobody has a birthday today.
 11:28:00.067 [scheduling-1] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list not paid orders
 11:28:00.067 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findListNoPay'
-11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000000-ab7a-4347-8319-12bead48ea8d
-11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000001-ab7a-4347-8319-12bead48ea8d
-11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000002-ab7a-4347-8319-12bead48ea8d
-11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000003-ab7a-4347-8319-12bead48ea8d
-11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000004-ab7a-4347-8319-12bead48ea8d
+11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000000-ab7a-4347-8319-12bead48ea8d
+11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000001-ab7a-4347-8319-12bead48ea8d
+11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000002-ab7a-4347-8319-12bead48ea8d
+11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000003-ab7a-4347-8319-12bead48ea8d
+11:28:00.112 [scheduling-1] WARN  ru.i.sys.labs.messages.sender.SmsNotification main-logback [] - SMS-message || Order NOT paid with ID 20000004-ab7a-4347-8319-12bead48ea8d
 11:28:00.112 [scheduling-1] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
 11:28:00.113 [scheduling-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
 11:28:16.148 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler main-logback [] - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
@@ -947,8 +947,8 @@ Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled metho
 12:06:34.049 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 14.855 seconds (JVM running for 16.931)
 12:07:00.003 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
-	at ru.i.sys.labs.messages.SmsNotification.findListNoPaid(SmsNotification.java:28)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:23)
+	at ru.i.sys.labs.messages.sender.SmsNotification.findListNoPaid(SmsNotification.java:28)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:23)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -964,7 +964,7 @@ java.lang.NullPointerException: null
 	at java.base/java.lang.Thread.run(Thread.java:832)
 12:07:00.004 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:24)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:24)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -980,7 +980,7 @@ java.lang.NullPointerException: null
 	at java.base/java.lang.Thread.run(Thread.java:832)
 12:08:00.002 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:24)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:24)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -996,8 +996,8 @@ java.lang.NullPointerException: null
 	at java.base/java.lang.Thread.run(Thread.java:832)
 12:08:00.002 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
-	at ru.i.sys.labs.messages.SmsNotification.findListNoPaid(SmsNotification.java:28)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:23)
+	at ru.i.sys.labs.messages.sender.SmsNotification.findListNoPaid(SmsNotification.java:28)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:23)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2686,7 +2686,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 0 of constructor in ru.i.sys.labs.messages.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
+Parameter 0 of constructor in ru.i.sys.labs.messages.sender.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
 
 
 Action:
@@ -2732,7 +2732,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 0 of constructor in ru.i.sys.labs.messages.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
+Parameter 0 of constructor in ru.i.sys.labs.messages.sender.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
 
 
 Action:
@@ -2899,7 +2899,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 0 of constructor in ru.i.sys.labs.messages.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
+Parameter 0 of constructor in ru.i.sys.labs.messages.sender.MailNotification required a bean of type 'ru.i.sys.labs.messages.property.MailProperty' that could not be found.
 
 
 Action:
@@ -3870,12 +3870,12 @@ java.lang.IllegalStateException: No ConfigurationProperties annotation found on 
 16:44:20.113 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
 16:44:31.122 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 9180 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
 16:44:31.125 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
-16:44:31.640 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext main-logback [] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\messages\MailNotification.class]; nested exception is java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.MailNotification
+16:44:31.640 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext main-logback [] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\messages\MailNotification.class]; nested exception is java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.sender.MailNotification
 16:44:31.646 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener main-logback [] - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 16:44:31.669 [main] ERROR o.s.boot.SpringApplication main-logback [] - Application run failed
-org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\messages\MailNotification.class]; nested exception is java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.MailNotification
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\messages\MailNotification.class]; nested exception is java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.sender.MailNotification
 	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:452)
 	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:315)
 	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:276)
@@ -3897,7 +3897,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read c
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332)
 	at ru.i.sys.labs.Application.main(Application.java:13)
-Caused by: java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.MailNotification
+Caused by: java.lang.IllegalStateException: Error processing condition on ru.i.sys.labs.messages.sender.MailNotification
 	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:60)
 	at org.springframework.context.annotation.ConditionEvaluator.shouldSkip(ConditionEvaluator.java:108)
 	at org.springframework.context.annotation.ConditionEvaluator.shouldSkip(ConditionEvaluator.java:88)
@@ -4133,7 +4133,7 @@ Caused by: java.lang.IllegalStateException: The name or value attribute of @Cond
 17:02:00.004 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -4150,7 +4150,7 @@ java.lang.NullPointerException: null
 17:02:00.005 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -4167,7 +4167,7 @@ java.lang.NullPointerException: null
 17:03:00.001 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.MailNotification.sendMessage(MailNotification.java:21)
+	at ru.i.sys.labs.messages.sender.MailNotification.sendMessage(MailNotification.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -4184,7 +4184,7 @@ java.lang.NullPointerException: null
 17:03:00.001 [scheduling-1] ERROR o.s.s.s.TaskUtils$LoggingErrorHandler main-logback [] - Unexpected error occurred in scheduled task
 java.lang.NullPointerException: null
 	at ru.i.sys.labs.messages.NotificationService.handler(NotificationService.java:25)
-	at ru.i.sys.labs.messages.SmsNotification.sendMessage(SmsNotification.java:22)
+	at ru.i.sys.labs.messages.sender.SmsNotification.sendMessage(SmsNotification.java:22)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
