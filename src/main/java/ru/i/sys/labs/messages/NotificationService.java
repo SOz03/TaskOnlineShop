@@ -28,39 +28,52 @@ public class NotificationService {
     private final MessageProperty messageProperty;
     private final GeneralProperty property;
 
+    private final String split = " ";
 
     public void handler(String prefix, String variation) {
 
-        if ((happyBirthdayProperty.isEnabled()) && (property.isEnabled())) {
+        checkHappyBirthdayInclusionIfOnStartProcess(prefix, variation);
+        checkListUnpaidOrdersInclusionIfOnStartProcess(prefix, variation);
+        checkListPaidOrdersInclusionIfOnStartProcess(prefix, variation);
+        checkMessageInclusionIfOnStartProcess(prefix, variation);
+    }
 
-            String[] messages = happyBirthdayProperty.getHow().split(" ");
+    public void checkHappyBirthdayInclusionIfOnStartProcess(String prefix, String variation) {
+        if ((happyBirthdayProperty.isEnabled()) && (property.isEnabled())) {
+            String[] messages = happyBirthdayProperty.getHow().split(split);
             for (String message : messages) {
                 if (message.equals(variation)) {
                     happyBirthday(prefix);
                 }
             }
         }
+    }
 
-        if ((ordersPaidProperty.isEnabled()) && (property.isEnabled())) {
-            String[] messages = ordersPaidProperty.getHow().split(" ");
-            for (String message : messages) {
-                if (message.equals(variation)) {
-                    listPaidOrders(prefix);
-                }
-            }
-        }
-
+    public void checkListUnpaidOrdersInclusionIfOnStartProcess(String prefix, String variation) {
         if ((ordersUnpaidProperty.isEnabled()) && (property.isEnabled())) {
-            String[] messages = ordersUnpaidProperty.getHow().split(" ");
+            String[] messages = ordersUnpaidProperty.getHow().split(split);
             for (String message : messages) {
                 if (message.equals(variation)) {
                     listUnpaidOrders(prefix);
                 }
             }
         }
+    }
 
+    public void checkListPaidOrdersInclusionIfOnStartProcess(String prefix, String variation) {
+        if ((ordersPaidProperty.isEnabled()) && (property.isEnabled())) {
+            String[] messages = ordersPaidProperty.getHow().split(split);
+            for (String message : messages) {
+                if (message.equals(variation)) {
+                    listPaidOrders(prefix);
+                }
+            }
+        }
+    }
+
+    public void checkMessageInclusionIfOnStartProcess(String prefix, String variation) {
         if ((messageProperty.isEnabled()) && (property.isEnabled()) && !messageProperty.getText().equals("")) {
-            String[] messages = messageProperty.getHow().split(" ");
+            String[] messages = messageProperty.getHow().split(split);
             for (String message : messages) {
                 if (message.equals(variation) && messageProperty.getRecipient().equals("")) {
                     message(prefix, messageProperty.getText());
@@ -104,7 +117,7 @@ public class NotificationService {
     }
 
     private void message(String prefix, String text, String recipient) {
-        log.info("{}Здравствуйте, {}", prefix,recipient);
+        log.info("{}Здравствуйте, {}", prefix, recipient);
         log.info("{} {}", prefix, text);
     }
 

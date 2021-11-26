@@ -4173,3 +4173,255 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 13:41:42.005 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
 13:41:42.007 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
 13:41:42.014 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
+15:01:16.038 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 11576 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
+15:01:16.041 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
+15:01:17.144 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+15:01:17.228 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Finished Spring Data repository scanning in 75 ms. Found 6 JPA repository interfaces.
+15:01:17.825 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat initialized with port(s): 8080 (http)
+15:01:17.835 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Initializing ProtocolHandler ["http-nio-8080"]
+15:01:17.836 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Starting service [Tomcat]
+15:01:17.836 [main] INFO  o.a.catalina.core.StandardEngine main-logback [] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+15:01:17.947 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring embedded WebApplicationContext
+15:01:17.948 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext main-logback [] - Root WebApplicationContext: initialization completed in 1838 ms
+15:01:18.101 [main] INFO  o.f.c.i.license.VersionPrinter main-logback [] - Flyway Community Edition 7.7.3 by Redgate
+15:01:18.108 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Starting...
+15:01:18.246 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Start completed.
+15:01:18.284 [main] INFO  o.f.c.i.database.base.DatabaseType main-logback [] - Database: jdbc:postgresql://localhost:5433/shop_db (PostgreSQL 13.5)
+15:01:18.349 [main] INFO  o.f.core.internal.command.DbValidate main-logback [] - Successfully validated 7 migrations (execution time 00:00.046s)
+15:01:18.358 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Current version of schema "shop": 2.1
+15:01:18.358 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Schema "shop" is up to date. No migration necessary.
+15:01:18.538 [main] INFO  o.h.jpa.internal.util.LogHelper main-logback [] - HHH000204: Processing PersistenceUnitInfo [name: default]
+15:01:18.613 [main] INFO  org.hibernate.Version main-logback [] - HHH000412: Hibernate ORM core version 5.4.32.Final
+15:01:18.816 [main] INFO  o.h.annotations.common.Version main-logback [] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+15:01:18.972 [main] INFO  org.hibernate.dialect.Dialect main-logback [] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+15:01:19.652 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator main-logback [] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:01:19.663 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+15:01:19.866 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext main-logback [] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductController' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\controller\BasketProductController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductService' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\service\BasketProductService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductRepositoryDAO' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\serviceDAO\BasketProductRepositoryDAO.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'basketProductRepository' defined in ru.i.sys.labs.repository.BasketProductRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.NoSuchMethodError: 'java.lang.Iterable org.springframework.data.mapping.model.AnnotationBasedPersistentProperty.getPersistentEntityTypeInformation()'
+15:01:19.866 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
+15:01:19.871 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
+15:01:19.884 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
+15:01:19.896 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Stopping service [Tomcat]
+15:01:19.908 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener main-logback [] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+15:01:19.924 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter main-logback [] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.data.jpa.mapping.JpaPersistentPropertyImpl.getPersistentEntityTypeInformation(JpaPersistentPropertyImpl.java:145)
+
+The following method did not exist:
+
+    'java.lang.Iterable org.springframework.data.mapping.model.AnnotationBasedPersistentProperty.getPersistentEntityTypeInformation()'
+
+The method's class, org.springframework.data.mapping.model.AnnotationBasedPersistentProperty, is available from the following locations:
+
+    jar:file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar!/org/springframework/data/mapping/model/AnnotationBasedPersistentProperty.class
+
+The class hierarchy was loaded from the following locations:
+
+    org.springframework.data.mapping.model.AnnotationBasedPersistentProperty: file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar
+    org.springframework.data.mapping.model.AbstractPersistentProperty: file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains a single, compatible version of org.springframework.data.mapping.model.AnnotationBasedPersistentProperty
+
+15:03:03.843 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 8828 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
+15:03:03.847 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
+15:03:05.038 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+15:03:05.143 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Finished Spring Data repository scanning in 96 ms. Found 6 JPA repository interfaces.
+15:03:05.790 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat initialized with port(s): 8080 (http)
+15:03:05.800 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Initializing ProtocolHandler ["http-nio-8080"]
+15:03:05.801 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Starting service [Tomcat]
+15:03:05.801 [main] INFO  o.a.catalina.core.StandardEngine main-logback [] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+15:03:05.923 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring embedded WebApplicationContext
+15:03:05.924 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext main-logback [] - Root WebApplicationContext: initialization completed in 2004 ms
+15:03:06.080 [main] INFO  o.f.c.i.license.VersionPrinter main-logback [] - Flyway Community Edition 7.7.3 by Redgate
+15:03:06.086 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Starting...
+15:03:06.254 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Start completed.
+15:03:06.302 [main] INFO  o.f.c.i.database.base.DatabaseType main-logback [] - Database: jdbc:postgresql://localhost:5433/shop_db (PostgreSQL 13.5)
+15:03:06.386 [main] INFO  o.f.core.internal.command.DbValidate main-logback [] - Successfully validated 7 migrations (execution time 00:00.047s)
+15:03:06.395 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Current version of schema "shop": 2.1
+15:03:06.396 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Schema "shop" is up to date. No migration necessary.
+15:03:06.562 [main] INFO  o.h.jpa.internal.util.LogHelper main-logback [] - HHH000204: Processing PersistenceUnitInfo [name: default]
+15:03:06.670 [main] INFO  org.hibernate.Version main-logback [] - HHH000412: Hibernate ORM core version 5.4.32.Final
+15:03:06.860 [main] INFO  o.h.annotations.common.Version main-logback [] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+15:03:07.445 [main] INFO  org.hibernate.dialect.Dialect main-logback [] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+15:03:08.483 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator main-logback [] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:03:08.493 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+15:03:08.696 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext main-logback [] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductController' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\controller\BasketProductController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductService' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\service\BasketProductService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basketProductRepositoryDAO' defined in file [C:\Users\s.ozerov\Desktop\Task\target\classes\ru\i\sys\labs\serviceDAO\BasketProductRepositoryDAO.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'basketProductRepository' defined in ru.i.sys.labs.repository.BasketProductRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.NoSuchMethodError: 'java.lang.Iterable org.springframework.data.mapping.model.AnnotationBasedPersistentProperty.getPersistentEntityTypeInformation()'
+15:03:08.697 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
+15:03:08.702 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
+15:03:08.714 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
+15:03:08.716 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Stopping service [Tomcat]
+15:03:08.736 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener main-logback [] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+15:03:08.765 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter main-logback [] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.data.jpa.mapping.JpaPersistentPropertyImpl.getPersistentEntityTypeInformation(JpaPersistentPropertyImpl.java:145)
+
+The following method did not exist:
+
+    'java.lang.Iterable org.springframework.data.mapping.model.AnnotationBasedPersistentProperty.getPersistentEntityTypeInformation()'
+
+The method's class, org.springframework.data.mapping.model.AnnotationBasedPersistentProperty, is available from the following locations:
+
+    jar:file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar!/org/springframework/data/mapping/model/AnnotationBasedPersistentProperty.class
+
+The class hierarchy was loaded from the following locations:
+
+    org.springframework.data.mapping.model.AnnotationBasedPersistentProperty: file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar
+    org.springframework.data.mapping.model.AbstractPersistentProperty: file:/C:/Users/s.ozerov/.m2/repository/org/springframework/data/spring-data-commons/2.5.4/spring-data-commons-2.5.4.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains a single, compatible version of org.springframework.data.mapping.model.AnnotationBasedPersistentProperty
+
+15:05:14.431 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 1776 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
+15:05:14.434 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
+15:05:15.829 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+15:05:15.915 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Finished Spring Data repository scanning in 77 ms. Found 6 JPA repository interfaces.
+15:05:16.547 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat initialized with port(s): 8080 (http)
+15:05:16.559 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Initializing ProtocolHandler ["http-nio-8080"]
+15:05:16.560 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Starting service [Tomcat]
+15:05:16.560 [main] INFO  o.a.catalina.core.StandardEngine main-logback [] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+15:05:16.678 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring embedded WebApplicationContext
+15:05:16.679 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext main-logback [] - Root WebApplicationContext: initialization completed in 2186 ms
+15:05:16.824 [main] INFO  o.f.c.i.license.VersionPrinter main-logback [] - Flyway Community Edition 7.7.3 by Redgate
+15:05:16.834 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Starting...
+15:05:16.994 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Start completed.
+15:05:17.035 [main] INFO  o.f.c.i.database.base.DatabaseType main-logback [] - Database: jdbc:postgresql://localhost:5433/shop_db (PostgreSQL 13.5)
+15:05:17.098 [main] INFO  o.f.core.internal.command.DbValidate main-logback [] - Successfully validated 7 migrations (execution time 00:00.040s)
+15:05:17.107 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Current version of schema "shop": 2.1
+15:05:17.108 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Schema "shop" is up to date. No migration necessary.
+15:05:17.295 [main] INFO  o.h.jpa.internal.util.LogHelper main-logback [] - HHH000204: Processing PersistenceUnitInfo [name: default]
+15:05:17.385 [main] INFO  org.hibernate.Version main-logback [] - HHH000412: Hibernate ORM core version 5.4.32.Final
+15:05:17.598 [main] INFO  o.h.annotations.common.Version main-logback [] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+15:05:17.740 [main] INFO  org.hibernate.dialect.Dialect main-logback [] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+15:05:18.419 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator main-logback [] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:05:18.429 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+15:05:19.743 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Starting ProtocolHandler ["http-nio-8080"]
+15:05:19.761 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat started on port(s): 8080 (http) with context path ''
+15:05:20.242 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 6.428 seconds (JVM running for 7.395)
+15:06:00.050 [taskScheduler-2] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:06:00.050 [taskScheduler-2] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:06:00.045 [taskScheduler-3] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:06:00.054 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1544/0x0000000801457040
+15:06:00.053 [taskScheduler-3] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:06:00.143 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:06:00.166 [taskScheduler-2] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:06:00.180 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:06:00.181 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:07:00.004 [taskScheduler-4] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:07:00.004 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1544/0x0000000801457040
+15:07:00.005 [taskScheduler-4] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:07:00.005 [taskScheduler-2] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:07:00.006 [taskScheduler-2] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:07:00.010 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:07:00.012 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:07:00.013 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:07:00.015 [taskScheduler-2] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:07:09.224 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
+15:07:09.226 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
+15:07:09.232 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
+15:21:24.726 [main] INFO  ru.i.sys.labs.Application main-logback [] - Starting Application using Java 14.0.2 on NONAME with PID 6932 (C:\Users\s.ozerov\Desktop\Task\target\classes started by s.ozerov in C:\Users\s.ozerov\Desktop\Task)
+15:21:24.729 [main] INFO  ru.i.sys.labs.Application main-logback [] - No active profile set, falling back to default profiles: default
+15:21:25.807 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+15:21:25.900 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate main-logback [] - Finished Spring Data repository scanning in 82 ms. Found 6 JPA repository interfaces.
+15:21:26.519 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat initialized with port(s): 8080 (http)
+15:21:26.529 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Initializing ProtocolHandler ["http-nio-8080"]
+15:21:26.530 [main] INFO  o.a.catalina.core.StandardService main-logback [] - Starting service [Tomcat]
+15:21:26.531 [main] INFO  o.a.catalina.core.StandardEngine main-logback [] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+15:21:26.643 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] main-logback [] - Initializing Spring embedded WebApplicationContext
+15:21:26.644 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext main-logback [] - Root WebApplicationContext: initialization completed in 1833 ms
+15:21:26.823 [main] INFO  o.f.c.i.license.VersionPrinter main-logback [] - Flyway Community Edition 7.7.3 by Redgate
+15:21:26.830 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Starting...
+15:21:26.973 [main] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Start completed.
+15:21:27.011 [main] INFO  o.f.c.i.database.base.DatabaseType main-logback [] - Database: jdbc:postgresql://localhost:5433/shop_db (PostgreSQL 13.5)
+15:21:27.060 [main] INFO  o.f.core.internal.command.DbValidate main-logback [] - Successfully validated 7 migrations (execution time 00:00.029s)
+15:21:27.069 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Current version of schema "shop": 2.1
+15:21:27.070 [main] INFO  o.f.core.internal.command.DbMigrate main-logback [] - Schema "shop" is up to date. No migration necessary.
+15:21:27.219 [main] INFO  o.h.jpa.internal.util.LogHelper main-logback [] - HHH000204: Processing PersistenceUnitInfo [name: default]
+15:21:27.282 [main] INFO  org.hibernate.Version main-logback [] - HHH000412: Hibernate ORM core version 5.4.32.Final
+15:21:27.513 [main] INFO  o.h.annotations.common.Version main-logback [] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+15:21:27.659 [main] INFO  org.hibernate.dialect.Dialect main-logback [] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+15:21:28.283 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator main-logback [] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:21:28.293 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+15:21:29.530 [main] INFO  o.a.coyote.http11.Http11NioProtocol main-logback [] - Starting ProtocolHandler ["http-nio-8080"]
+15:21:29.550 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer main-logback [] - Tomcat started on port(s): 8080 (http) with context path ''
+15:21:30.029 [main] INFO  ru.i.sys.labs.Application main-logback [] - Started Application in 5.797 seconds (JVM running for 7.272)
+15:22:00.034 [taskScheduler-3] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:22:00.037 [taskScheduler-3] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:22:00.044 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:22:00.059 [taskScheduler-2] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:22:00.062 [taskScheduler-2] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:22:00.176 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:22:00.214 [taskScheduler-2] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:22:00.248 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:22:00.249 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:23:00.005 [taskScheduler-4] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:23:00.005 [taskScheduler-1] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:23:00.006 [taskScheduler-1] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:23:00.009 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:23:00.012 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:23:00.007 [taskScheduler-2] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:23:00.018 [taskScheduler-2] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:23:00.022 [taskScheduler-2] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:23:00.022 [taskScheduler-2] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:24:00.009 [taskScheduler-5] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:24:00.009 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:24:00.010 [taskScheduler-5] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:24:00.010 [taskScheduler-4] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:24:00.011 [taskScheduler-4] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:24:00.016 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:24:00.019 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:24:00.021 [taskScheduler-5] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:24:00.022 [taskScheduler-5] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:25:00.013 [taskScheduler-3] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:25:00.014 [taskScheduler-4] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:25:00.014 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:25:00.014 [taskScheduler-3] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:25:00.015 [taskScheduler-4] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:25:00.020 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:25:00.020 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:25:00.021 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:25:00.026 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:26:00.002 [taskScheduler-3] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:26:00.004 [taskScheduler-3] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:26:00.005 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:26:00.004 [taskScheduler-5] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:26:00.010 [taskScheduler-5] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:26:00.011 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:26:00.012 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:26:00.014 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:26:00.026 [taskScheduler-5] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:27:00.007 [taskScheduler-4] INFO  r.i.sys.labs.service.CustomerService main-logback [] - get customer
+15:27:00.007 [taskScheduler-1] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'findAll' and specification class ru.i.sys.labs.specification.CustomerSpecification$$Lambda$1545/0x0000000801457440
+15:27:00.008 [taskScheduler-4] INFO  r.i.s.l.s.CustomerRepositoryDAO main-logback [] - executing a database query 'getCustomerByPhoneNumber'
+15:27:00.008 [taskScheduler-3] INFO  ru.i.sys.labs.service.OrderService main-logback [] - find list paid orders
+15:27:00.010 [taskScheduler-3] INFO  r.i.s.l.s.OrderRepositoryDAO main-logback [] - executing a database query 'findOrdersPay'
+15:27:00.014 [taskScheduler-1] INFO  r.i.s.l.messages.NotificationService main-logback [] - Mail || -Unfortunately, nobody has a birthday today.
+15:27:00.017 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || -Здравствуйте, Иванов Иван Иванович
+15:27:00.018 [taskScheduler-3] INFO  r.i.s.l.messages.NotificationService main-logback [] - SMS || -Order PAID with ID 20000002-ab7a-4347-8319-12bead48ea8d 
+15:27:00.018 [taskScheduler-4] INFO  r.i.s.l.messages.NotificationService main-logback [] - ВКОНТАКТЕ || - hello !
+15:27:34.346 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean main-logback [] - Closing JPA EntityManagerFactory for persistence unit 'default'
+15:27:34.348 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown initiated...
+15:27:34.357 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource main-logback [] - HikariPool-1 - Shutdown completed.
