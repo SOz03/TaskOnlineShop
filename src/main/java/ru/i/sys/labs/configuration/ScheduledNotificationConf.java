@@ -1,5 +1,6 @@
 package ru.i.sys.labs.configuration;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,13 +18,17 @@ import ru.i.sys.labs.messages.property.*;
         OrdersUnpaidProperty.class, HappyBirthdayProperty.class
 })
 @EnableScheduling
+@RequiredArgsConstructor
 @ConditionalOnProperty(name = "spring.application.notification.enabled", matchIfMissing = true)
 public class ScheduledNotificationConf {
 
+    private final GeneralProperty property;
+
     @Bean
     public TaskScheduler taskScheduler() {
+        int pool = Integer.parseInt(property.getPoolSize());
         final ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-        scheduler.setPoolSize(5);
+        scheduler.setPoolSize(pool);
         return scheduler;
     }
 }

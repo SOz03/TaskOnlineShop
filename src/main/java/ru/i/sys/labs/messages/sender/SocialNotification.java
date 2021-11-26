@@ -1,9 +1,10 @@
-package ru.i.sys.labs.messages;
+package ru.i.sys.labs.messages.sender;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import ru.i.sys.labs.messages.NotificationService;
 import ru.i.sys.labs.messages.property.GeneralProperty;
 
 @Component

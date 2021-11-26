@@ -12,7 +12,10 @@ import ru.i.sys.labs.messages.property.*;
 import ru.i.sys.labs.service.CustomerService;
 import ru.i.sys.labs.service.OrderService;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -28,8 +31,6 @@ public class NotificationService {
     private final MessageProperty messageProperty;
     private final GeneralProperty property;
 
-    private final String split = " ";
-
     public void handler(String prefix, String variation) {
 
         checkHappyBirthdayInclusionIfOnStartProcess(prefix, variation);
@@ -40,9 +41,9 @@ public class NotificationService {
 
     public void checkHappyBirthdayInclusionIfOnStartProcess(String prefix, String variation) {
         if ((happyBirthdayProperty.isEnabled()) && (property.isEnabled())) {
-            String[] messages = happyBirthdayProperty.getHow().split(split);
-            for (String message : messages) {
-                if (message.equals(variation)) {
+            String[] arrayHowSend = happyBirthdayProperty.getHow().split(property.getSplit());
+            for (String way : setWay(arrayHowSend)) {
+                if (way.equals(variation)) {
                     happyBirthday(prefix);
                 }
             }
@@ -51,9 +52,9 @@ public class NotificationService {
 
     public void checkListUnpaidOrdersInclusionIfOnStartProcess(String prefix, String variation) {
         if ((ordersUnpaidProperty.isEnabled()) && (property.isEnabled())) {
-            String[] messages = ordersUnpaidProperty.getHow().split(split);
-            for (String message : messages) {
-                if (message.equals(variation)) {
+            String[] arrayHowSend = ordersUnpaidProperty.getHow().split(property.getSplit());
+            for (String way : setWay(arrayHowSend)) {
+                if (way.equals(variation)) {
                     listUnpaidOrders(prefix);
                 }
             }
@@ -62,9 +63,9 @@ public class NotificationService {
 
     public void checkListPaidOrdersInclusionIfOnStartProcess(String prefix, String variation) {
         if ((ordersPaidProperty.isEnabled()) && (property.isEnabled())) {
-            String[] messages = ordersPaidProperty.getHow().split(split);
-            for (String message : messages) {
-                if (message.equals(variation)) {
+            String[] arrayHowSend = ordersPaidProperty.getHow().split(property.getSplit());
+            for (String way : setWay(arrayHowSend)) {
+                if (way.equals(variation)) {
                     listPaidOrders(prefix);
                 }
             }
@@ -73,11 +74,11 @@ public class NotificationService {
 
     public void checkMessageInclusionIfOnStartProcess(String prefix, String variation) {
         if ((messageProperty.isEnabled()) && (property.isEnabled()) && !messageProperty.getText().equals("")) {
-            String[] messages = messageProperty.getHow().split(split);
-            for (String message : messages) {
-                if (message.equals(variation) && messageProperty.getRecipient().equals("")) {
+            String[] arrayHowSend = messageProperty.getHow().split(property.getSplit());
+            for (String way : setWay(arrayHowSend)) {
+                if (way.equals(variation) && messageProperty.getRecipient().equals("")) {
                     message(prefix, messageProperty.getText());
-                } else if (message.equals(variation) && !messageProperty.getRecipient().equals("")) {
+                } else if (way.equals(variation) && !messageProperty.getRecipient().equals("")) {
                     CustomerDTO customerDTO;
                     try {
                         customerDTO = customerService.getCustomerByPhoneNumber(messageProperty.getRecipient());
@@ -123,5 +124,9 @@ public class NotificationService {
 
     private void message(String prefix, String text) {
         log.info("{} {}", prefix, text);
+    }
+
+    private Set<String> setWay(String[] ways){
+        return Arrays.stream(ways).collect(Collectors.toSet());
     }
 }

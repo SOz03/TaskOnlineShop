@@ -22,6 +22,8 @@ spring:
 
     notification:
       enabled: true #true/false
+      poolSize: 5
+      split: _
       sms:
         time: 0 * * ? * *
         prefix: SMS || -
@@ -31,22 +33,21 @@ spring:
       social:
         time: 0 * * ? * *
         prefix: ВКОНТАКТЕ || -
-
       send:
         orders-unpaid:
           enabled: true
-          how:
+          how: mail_sms_sms_social_social_mail
         happy-birthday:
           enabled: true
-          how: mail
+          how: mail_sms_sms_social_social_mail
         orders-paid:
           enabled: true
-          how: sms
+          how: mail_sms_sms_social_social_mail
         message:
           enabled: true
           recipient: 89278911111
           text: hello !
-          how: social
+          how: mail_sms_sms_social_social_mail
 
 
 
