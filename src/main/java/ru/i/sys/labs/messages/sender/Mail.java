@@ -5,20 +5,24 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.i.sys.labs.messages.NotificationService;
-import ru.i.sys.labs.messages.property.GeneralProperty;
+import ru.i.sys.labs.messages.property.Property;
+
+import java.util.List;
+import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "spring.application.notification.enabled", havingValue = "true", matchIfMissing = true)
-public class MailNotification implements NotificationSender {
+public class Mail implements Sender {
 
-    private final GeneralProperty property;
+    private final Property property;
     private final NotificationService notificationService;
 
     @Override
-    @Scheduled(cron = "${spring.application.notification.mail.time}")
+    @Scheduled(cron = "${spring.application.notification.mailTime}")
     public void sendMessage() {
-        notificationService.handler(property.getMailPrefix(), "mail");
+        List<Map<String, String>> mailList = notificationService.getList("mail");
+        notificationService.send(property.getMailPrefix(), mailList);
     }
 
 }

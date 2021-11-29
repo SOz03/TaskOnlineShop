@@ -5,19 +5,25 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.i.sys.labs.messages.NotificationService;
-import ru.i.sys.labs.messages.property.GeneralProperty;
+import ru.i.sys.labs.messages.property.Property;
+
+import java.util.List;
+import java.util.Map;
+
 
 @Component
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "spring.application.notification.enabled", havingValue = "true", matchIfMissing = true)
-public class SocialNotification implements NotificationSender {
+public class Sms implements Sender {
 
     private final NotificationService notificationService;
-    private final GeneralProperty property;
+    private final Property property;
 
     @Override
-    @Scheduled(cron = "${spring.application.notification.social.time}")
+    @Scheduled(cron = "${spring.application.notification.smsTime}")
     public void sendMessage() {
-        notificationService.handler(property.getSocialPrefix(), "social");
+        List<Map<String, String>> smsList = notificationService.getList("sms");
+        notificationService.send(property.getSmsPrefix(), smsList);
     }
+
 }

@@ -13,16 +13,13 @@ import ru.i.sys.labs.messages.property.*;
 
 @Configuration
 @Slf4j
-@EnableConfigurationProperties({GeneralProperty.class,
-        MessageProperty.class, OrdersPaidProperty.class,
-        OrdersUnpaidProperty.class, HappyBirthdayProperty.class
-})
+@EnableConfigurationProperties(Property.class)
 @EnableScheduling
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "spring.application.notification.enabled", matchIfMissing = true)
 public class ScheduledNotificationConf {
 
-    private final GeneralProperty property;
+    private final Property property;
 
     @Bean
     public TaskScheduler taskScheduler() {

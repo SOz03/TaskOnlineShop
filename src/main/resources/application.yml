@@ -21,33 +21,47 @@ spring:
       name: main-logback
 
     notification:
-      enabled: true #true/false
-      poolSize: 5
-      split: _
-      sms:
-        time: 0 * * ? * *
-        prefix: SMS || -
-      mail:
-        time: 0 * * ? * *
-        prefix: Mail || -
-      social:
-        time: 0 * * ? * *
-        prefix: ВКОНТАКТЕ || -
-      send:
-        orders-unpaid:
+      enabled: true
+      poolSize: 4
+      split: " "
+      smsPrefix: SMS  -
+      smsTime: 0 * * ? * *
+      mailPrefix: Mail -
+      mailTime: 0 * * ? * *
+      socialPrefix: VK   -
+      socialTime: 0 * * ? * *
+      notifications:
+        -
+          name: Happy Birthday!!!
           enabled: true
-          how: mail_sms_sms_social_social_mail
-        happy-birthday:
+          description: Happy Birthday, Ivan Popov!
+          how: sms mail social
+        -
+          name: No Order
           enabled: true
-          how: mail_sms_sms_social_social_mail
-        orders-paid:
+          description: .xexe.
+          how: mail sms
+        -
+          name: Sale !
           enabled: true
-          how: mail_sms_sms_social_social_mail
-        message:
+          description: .aaaaaaaaaa..aaa
+          how: sms
+        -
+          name: Sale 1 !
           enabled: true
-          recipient: 89278911111
-          text: hello !
-          how: mail_sms_sms_social_social_mail
+          description: .aaaaaaaaaa..aaa1
+          how: sms mail
+        -
+          name: Sale 2 !
+          enabled: true
+          description: .aaaaaaaaaa..aaa2
+          how: sms mail
+        -
+          name: Sale 3 !
+          enabled: true
+          description: .aaaaaaaaaa..aaa3
+          how: sms mail
+
 
 
 
