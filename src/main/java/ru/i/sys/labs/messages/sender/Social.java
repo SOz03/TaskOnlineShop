@@ -19,9 +19,9 @@ public class Social implements Sender {
     private final Property property;
 
     @Override
-    @Scheduled(cron = "${spring.application.notification.socialTime}")
+    @Scheduled(cron = "${spring.application.notification.social.time}")
     public void sendMessage() {
-        List<Map<String, String>> socialList = notificationService.getList("social");
+        List<Map<String, String>> socialList = notificationService.getList(property.getSocialValidation());
         notificationService.send(property.getSocialPrefix(), socialList);
     }
 }

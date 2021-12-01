@@ -20,9 +20,9 @@ public class Sms implements Sender {
     private final Property property;
 
     @Override
-    @Scheduled(cron = "${spring.application.notification.smsTime}")
+    @Scheduled(cron = "${spring.application.notification.sms.time}")
     public void sendMessage() {
-        List<Map<String, String>> smsList = notificationService.getList("sms");
+        List<Map<String, String>> smsList = notificationService.getList(property.getSmsValidation());
         notificationService.send(property.getSmsPrefix(), smsList);
     }
 

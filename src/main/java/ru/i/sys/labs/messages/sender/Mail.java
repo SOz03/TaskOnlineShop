@@ -19,9 +19,9 @@ public class Mail implements Sender {
     private final NotificationService notificationService;
 
     @Override
-    @Scheduled(cron = "${spring.application.notification.mailTime}")
+    @Scheduled(cron = "${spring.application.notification.mail.time}")
     public void sendMessage() {
-        List<Map<String, String>> mailList = notificationService.getList("mail");
+        List<Map<String, String>> mailList = notificationService.getList(property.getMailValidation());
         notificationService.send(property.getMailPrefix(), mailList);
     }
 

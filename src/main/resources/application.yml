@@ -15,21 +15,30 @@ spring:
   flyway:
     schemas: shop
 
-  #Timer
+
   application:
     logback:
       name: main-logback
 
+    #Timer
     notification:
       enabled: true
-      poolSize: 4
+      poolSize: 3
       split: " "
-      smsPrefix: SMS  -
-      smsTime: 0 * * ? * *
-      mailPrefix: Mail -
-      mailTime: 0 * * ? * *
-      socialPrefix: VK   -
-      socialTime: 0 * * ? * *
+
+      sms:
+        prefix: SMS  -
+        validation: sms
+        time: 0 * * ? * *
+      mail:
+        prefix: Mail -
+        validation: mail
+        time: 0 * * ? * *
+      social:
+        prefix: VK   -
+        validation: social
+        time: 0 * * ? * *
+
       notifications:
         -
           name: Happy Birthday!!!
