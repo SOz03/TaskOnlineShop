@@ -15,65 +15,28 @@ spring:
   flyway:
     schemas: shop
 
-
   application:
     logback:
       name: main-logback
 
     #Timer
-    notification:
+    mailing:
       enabled: true
       poolSize: 3
-      split: " "
-
-      sms:
-        prefix: SMS  -
-        validation: sms
-        time: 0 * * ? * *
-      mail:
-        prefix: Mail -
-        validation: mail
-        time: 0 * * ? * *
-      social:
-        prefix: VK   -
-        validation: social
-        time: 0 * * ? * *
-
-      notifications:
-        -
+      messages:
+        vk:
+          enabled: true
+          time: 0 * * ? * *
+          name: MESSAGE
+          description: message vk
+        mail:
+          enabled: true
+          time: 0 * * ? * *
+          name: message
+          description: message mail
+        sms:
+          enabled: true
+          time: 0 * * ? * *
           name: Happy Birthday!!!
-          enabled: true
           description: Happy Birthday, Ivan Popov!
-          how: sms mail social
-        -
-          name: No Order
-          enabled: true
-          description: .xexe.
-          how: mail sms
-        -
-          name: Sale !
-          enabled: true
-          description: .aaaaaaaaaa..aaa
-          how: sms
-        -
-          name: Sale 1 !
-          enabled: true
-          description: .aaaaaaaaaa..aaa1
-          how: sms mail
-        -
-          name: Sale 2 !
-          enabled: true
-          description: .aaaaaaaaaa..aaa2
-          how: sms mail
-        -
-          name: Sale 3 !
-          enabled: true
-          description: .aaaaaaaaaa..aaa3
-          how: sms mail
-
-
-
-
-
-
 

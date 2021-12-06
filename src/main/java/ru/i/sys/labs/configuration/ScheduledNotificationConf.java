@@ -9,17 +9,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import ru.i.sys.labs.messages.property.Property;
+import ru.i.sys.labs.messages.MailingService;
+import ru.i.sys.labs.messages.Property;
+import ru.i.sys.labs.messages.sender.Mail;
+import ru.i.sys.labs.messages.sender.Sms;
+import ru.i.sys.labs.messages.sender.Vk;
 
 @Configuration
 @Slf4j
 @EnableConfigurationProperties(Property.class)
 @EnableScheduling
 @RequiredArgsConstructor
-@ConditionalOnProperty(name = "spring.application.notification.enabled", matchIfMissing = true)
+@ConditionalOnProperty(name = "spring.application.mailing.enabled", matchIfMissing = true)
 public class ScheduledNotificationConf {
 
     private final Property property;
+    private final MailingService mailingService;
 
     @Bean
     public TaskScheduler taskScheduler() {
@@ -27,5 +32,20 @@ public class ScheduledNotificationConf {
         final ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(pool);
         return scheduler;
+    }
+
+    @Bean
+    public Mail sendMail() {
+        return new Mail(mailingService);
+    }
+
+    @Bean
+    public Vk sendVk() {
+        return new Vk(mailingService);
+    }
+
+    @Bean
+    public Sms sendSms() {
+        return new Sms(mailingService);
     }
 }

@@ -27,36 +27,32 @@ public class OrderService {
     private final ModelMapper modelMapper;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Order> findListNoPay() {
+    public List<OrderDTO> findListNoPay() {
         log.info("find list not paid orders");
+
         List<Order> ordersNoPaid = orderRepo.findListNoPay();
         if (ordersNoPaid.isEmpty()) {
             log.info("all orders paid");
         }
 
-        return ordersNoPaid;
+        return convertInListOrderDTO(ordersNoPaid);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Order> findListPaid() {
+    public List<OrderDTO> findListPaid() {
         log.info("find list paid orders");
         List<Order> ordersPaid = orderRepo.findListPaid();
         if (ordersPaid.isEmpty()) {
             log.info("no paid orders");
         }
 
-        return ordersPaid;
+        return convertInListOrderDTO(ordersPaid);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public List<OrderDTO> getAllOrders() {
         log.info("list orders");
-
-        return orderRepo
-                .findAll()
-                .stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
+        return convertInListOrderDTO(orderRepo.findAll());
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -83,6 +79,11 @@ public class OrderService {
         log.info("starting delete order by id");
         orderRepo.deleteById(id);
         log.info("finished delete order by id");
+    }
+
+    private List<OrderDTO> convertInListOrderDTO(List<Order> orders) {
+        return orders.stream().map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
 
@@ -128,7 +129,7 @@ public class OrderService {
         return modelMapper.map(orderDTO, Order.class);
     }
 
-    private Order save(Order order, Order updateOrder){
+    private Order save(Order order, Order updateOrder) {
         order.setCost(updateOrder.getCost());
         order.setDate(updateOrder.getDate());
         order.setDelivery(updateOrder.getDelivery());

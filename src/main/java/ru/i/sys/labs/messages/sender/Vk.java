@@ -6,16 +6,15 @@ import org.springframework.scheduling.annotation.Scheduled;
 import ru.i.sys.labs.messages.MailingService;
 
 @RequiredArgsConstructor
-@ConditionalOnProperty(name = "spring.application.mailing.messages.sms.enabled", havingValue = "true", matchIfMissing = true)
-public class Sms implements Sender {
+@ConditionalOnProperty(name = "spring.application.mailing.messages.vk.enabled", havingValue = "true", matchIfMissing = true)
+public class Vk implements Sender {
 
     private final MailingService mailingService;
-    private final String className = Sms.class.getSimpleName();
+    private final String className = Vk.class.getSimpleName();
 
     @Override
-    @Scheduled(cron = "${spring.application.mailing.messages.sms.time}")
+    @Scheduled(cron = "${spring.application.mailing.messages.vk.time}")
     public void sendMessage() {
         mailingService.send(className, mailingService.getListForCurrentMailing(className));
     }
-
 }

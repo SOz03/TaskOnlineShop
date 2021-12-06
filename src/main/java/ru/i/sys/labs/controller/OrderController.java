@@ -26,10 +26,19 @@ public class OrderController {
     @GetMapping("")
     public  ResponseEntity<List<OrderDTO>> getAllOrders() {
         List<OrderDTO> allOrders = orderControllerService.getAllOrders();
-        if(allOrders.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok().body(allOrders);
+        return getOrdersIfListNoEmpty(allOrders);
+    }
+
+    @GetMapping("/no-paid")
+    public  ResponseEntity<List<OrderDTO>> getOrdersNoPaid() {
+        List<OrderDTO> ordersNoPay = orderControllerService.findListNoPay();
+        return getOrdersIfListNoEmpty(ordersNoPay);
+    }
+
+    @GetMapping("paid")
+    public  ResponseEntity<List<OrderDTO>> getOrdersPaid() {
+        List<OrderDTO> ordersPaid = orderControllerService.findListPaid();
+        return getOrdersIfListNoEmpty(ordersPaid);
     }
 
     @PostMapping("")
@@ -56,5 +65,10 @@ public class OrderController {
     public ResponseEntity<OrderDTO> deleteOrder(@PathVariable(value = "id") UUID id) {
         orderControllerService.deleteOrder(id);
         return ResponseEntity.ok().build();
+    }
+
+    private ResponseEntity<List<OrderDTO>> getOrdersIfListNoEmpty(List<OrderDTO> orders){
+        if(orders.isEmpty()) return ResponseEntity.noContent().build();
+        else return ResponseEntity.ok().body(orders);
     }
 }
