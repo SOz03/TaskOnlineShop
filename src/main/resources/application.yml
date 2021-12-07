@@ -19,10 +19,8 @@ application:
   logback:
     name: main-logback
 
-  #Timer
-  mailing:
-    poolSize: 3
-    messages:
+  notifications:
+    channels:
       vk:
         enabled: true
         time: 0 * * ? * *
