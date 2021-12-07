@@ -11,12 +11,10 @@ import java.util.Map;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "spring.application.mailing")
+@ConfigurationProperties(prefix = "application.mailing")
 public class Property {
 
     private Map<String, Message> messages = new HashMap<>();
-
-    private boolean enabled;
 
     @Size(min = 1, max = 2)
     @Min(value = 1, message = "Minimum number of threads 1")

@@ -15,28 +15,27 @@ spring:
   flyway:
     schemas: shop
 
-  application:
-    logback:
-      name: main-logback
+application:
+  logback:
+    name: main-logback
 
-    #Timer
-    mailing:
-      enabled: true
-      poolSize: 3
-      messages:
-        vk:
-          enabled: true
-          time: 0 * * ? * *
-          name: MESSAGE
-          description: message vk
-        mail:
-          enabled: true
-          time: 0 * * ? * *
-          name: message
-          description: message mail
-        sms:
-          enabled: true
-          time: 0 * * ? * *
-          name: Happy Birthday!!!
-          description: Happy Birthday, Ivan Popov!
+  #Timer
+  mailing:
+    poolSize: 3
+    messages:
+      vk:
+        enabled: true
+        time: 0 * * ? * *
+        name: MESSAGE
+        description: message vk
+      mail:
+        enabled: true
+        time: 0 * * ? * *
+        name: message
+        description: message mail
+      sms:
+        enabled: false
+        time: 0 * * ? * *
+        name: Happy Birthday!!!
+        description: Happy Birthday, Ivan Popov!
 
