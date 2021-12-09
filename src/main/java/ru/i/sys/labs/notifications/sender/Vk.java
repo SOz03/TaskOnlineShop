@@ -2,7 +2,6 @@ package ru.i.sys.labs.notifications.sender;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.i.sys.labs.notifications.NotificationsService;
 
@@ -15,7 +14,6 @@ public class Vk implements Sender {
     private final String className = Vk.class.getSimpleName();
 
     @Override
-    @Scheduled(cron = "${application.notifications.channels.vk.time}")
     public void sendNotification() {
         notificationsService.sendNotification(className);
     }

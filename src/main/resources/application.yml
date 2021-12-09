@@ -20,20 +20,18 @@ application:
     name: main-logback
 
   notifications:
+    time: 0 * * ? * *
     channels:
       vk:
         enabled: true
-        time: 0 * * ? * *
         name: MESSAGE
         description: message vk
       mail:
         enabled: true
-        time: 0 * * ? * *
         name: message
         description: message mail
       sms:
         enabled: false
-        time: 0 * * ? * *
         name: Happy Birthday!!!
         description: Happy Birthday, Ivan Popov!
 
