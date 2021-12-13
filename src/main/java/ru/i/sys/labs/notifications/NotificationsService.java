@@ -16,9 +16,9 @@ public class NotificationsService {
     public void sendNotification(@NotEmpty String aClass) {
         NotificationsProperty.Notification notification = property
                 .getChannels()
-                .get(aClass);
+                .get(aClass.toLowerCase());
 
-        log.info("<{} {}, {}>", aClass, notification.getName(), notification.getDescription());
+        if (notification == null) log.warn("Notification {} equals {}", aClass, null);
+        else log.info("{} {}, {}", aClass, notification.getName(), notification.getDescription());
     }
-
 }

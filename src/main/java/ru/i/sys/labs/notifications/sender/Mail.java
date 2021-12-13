@@ -9,7 +9,7 @@ import ru.i.sys.labs.notifications.NotificationsService;
 public class Mail implements Sender {
 
     private final NotificationsService notificationsService;
-    private final String className = Mail.class.getSimpleName();
+    private final String className = getClass().getSimpleName();
 
     @Override
     public void sendNotification() {

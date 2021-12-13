@@ -1,8 +1,6 @@
 package ru.i.sys.labs.configuration;
 
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import ru.i.sys.labs.notifications.NotificationsProperty;
 import ru.i.sys.labs.notifications.sender.Sender;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,27 +20,20 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ScheduledNotificationConfig {
 
-    private final NotificationsProperty property;
-    private final List<Sender> listSenders;
+    private final List<Sender> listAllSenders;
 
     @Bean
-    public Map<String, Sender> getMapAllSender() {
-        Map<String, Sender> mapLinks = new HashMap<>();
-        listSenders.forEach(sender -> mapLinks.put(sender.getClass().getSimpleName(), sender));
+    public Map<String, Sender> MapAllSender() {
 
-        return mapLinks;
-    }
+        Map<String, Sender> mapLinksSenders = new HashMap<>();
+        if (listAllSenders.isEmpty()) {
+            log.warn("List Senders is empty");
+        } else {
+            listAllSenders.forEach(sender ->
+                    mapLinksSenders.put(sender.getClass().getSimpleName(), sender)
+            );
+        }
 
-    @Bean
-    public List<Sender> getListEnabledChannels() {
-        List<Sender> sendersEnabled = new ArrayList<>();
-        property.getChannels()
-                .entrySet()
-                .stream()
-                .filter(channel -> channel.getValue().isEnabled())
-                .map(channel -> getMapAllSender().get(channel.getKey()))
-                .forEach(sendersEnabled::add);
-
-        return sendersEnabled;
+        return mapLinksSenders;
     }
 }

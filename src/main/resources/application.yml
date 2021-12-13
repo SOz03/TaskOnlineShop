@@ -22,15 +22,15 @@ application:
   notifications:
     time: 0 * * ? * *
     channels:
-      Vk:
+      vk:
         enabled: true
         name: MESSAGE
         description: message vk
-      Mail:
+      mail:
         enabled: true
         name: message
         description: message mail
-      Sms:
+      sms:
         enabled: false
         name: Happy Birthday!!!
         description: Happy Birthday, Ivan Popov!
