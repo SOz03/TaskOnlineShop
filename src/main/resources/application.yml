@@ -1,19 +1,35 @@
 # Spring Boot configuration
+server.port: 8888
 
 spring:
   jpa:
     open-in-view: false
 
-  # Database
   datasource:
     url: jdbc:postgresql://localhost:5433/shop_db?currentSchema=shop
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 080801
 
-  # Flyway
   flyway:
     schemas: shop
+
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:${server.port}
+      server:
+        bootstrap: true
+        git:
+          uri: https://github.com/SOz03/TaskOnlineShop
+          skipSslValidation: false
+          default-label: main
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 application:
   logback:
@@ -23,15 +39,16 @@ application:
     time: 0 * * ? * *
     channels:
       vk:
-        enabled: true
+        enabled: false
         name: MESSAGE
         description: message vk
       mail:
-        enabled: true
+        enabled: false
         name: message
         description: message mail
       sms:
         enabled: false
         name: Happy Birthday!!!
         description: Happy Birthday, Ivan Popov!
+
 

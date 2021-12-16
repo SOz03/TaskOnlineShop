@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Getter
@@ -12,7 +11,7 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "application.notifications")
 public class NotificationsProperty {
 
-    private Map<String, Notification> channels = new HashMap<>();
+    private Map<String, Notification> channels;
 
     @Setter
     @Getter
