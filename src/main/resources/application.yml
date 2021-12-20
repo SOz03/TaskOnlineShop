@@ -39,16 +39,21 @@ application:
     time: 0 * * ? * *
     channels:
       vk:
-        enabled: false
+        enabled: true
+        day-format: EEEE dd MM yyyy
+        dayWeek: monday 20 12 2021
         name: MESSAGE
         description: message vk
       mail:
-        enabled: false
+        enabled: true
+        day-format: EEEE dd MM yyyy
+        dayWeek: monday 20 12 2022
         name: message
         description: message mail
       sms:
-        enabled: false
+        enabled: true
+        day-format: EEEE dd MM yyyy
+        dayWeek:
         name: Happy Birthday!!!
         description: Happy Birthday, Ivan Popov!
-
 
