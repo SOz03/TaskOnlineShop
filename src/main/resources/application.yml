@@ -5,8 +5,8 @@ spring:
   jpa:
     open-in-view: false
 
-  datasource:
-    url: jdbc:postgresql://localhost:5433/shop_db?currentSchema=shop
+  datasource: #localhost:5433
+    url: jdbc:postgresql://localhost:5432/shop_db?currentSchema=shop
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 080801

@@ -25,18 +25,17 @@ public class NotificationsService {
         else log.info("{} {}, {}", aClass, notification.getName(), notification.getDescription());
     }
 
-    public boolean filterNotification(String dayFormat, String className){
+    public boolean filterNotification(String className){
         boolean startFilter = true;
+        NotificationsProperty.Notification notification = property.getChannels().get(className);
 
-        String dayWeekChannel = property.getChannels().get(className).getDayWeek();
-        if (!dayWeekChannel.equals("")){
-            Date nowDate = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat(dayFormat, Locale.ENGLISH);
-            if (!dayWeekChannel.equalsIgnoreCase(dateFormat.format(nowDate))){
+        if (!notification.getDayWeek().equalsIgnoreCase("")){
+            SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
+            if (!notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()))){
                 startFilter = false;
             }
         } else {
-            log.info("Day format is empty -> {}", className);
+            log.info("Day week is empty -> {}", className);
         }
 
         return startFilter;

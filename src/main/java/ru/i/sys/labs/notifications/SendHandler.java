@@ -23,6 +23,6 @@ public class SendHandler {
                 .stream()
                 .filter(channel -> channel.getValue().isEnabled())
                 .map(channel -> mapAllSender.get(channel.getKey().toLowerCase()))
-                .forEach(Sender::startTimeFiltering);
+                .forEach(Sender::sendNotification);
     }
 }

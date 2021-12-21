@@ -4,5 +4,5 @@ public interface Sender {
 
     void sendNotification();
 
-    void startTimeFiltering();
+    boolean checkingFilterIsEnabled();
 }
