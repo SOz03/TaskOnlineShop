@@ -1,25 +1,50 @@
 package ru.i.sys.labs.notifications.sender;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.i.sys.labs.notifications.NotificationsProperty;
-import ru.i.sys.labs.notifications.NotificationsService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class Sms implements Sender {
 
-    private final NotificationsService notificationsService;
-    private final String className = getClass().getSimpleName().toLowerCase();
+    private final NotificationsProperty property;
 
     @Override
     public void sendNotification() {
-        if (checkingFilterIsEnabled()) notificationsService.sendNotification(className);
+        NotificationsProperty.Notification notification = property
+                .getChannels()
+                .get("sms");
+
+        if (notification == null) {
+            log.warn("Notification Sms equals null");
+        } else {
+            log.info("Sms {}, {}", notification.getName(), notification.getDescription());
+        }
     }
 
     @Override
-    public boolean checkingFilterIsEnabled() {
-         return notificationsService.filterNotification(className);
+    public boolean checkingDateFilterActivity() {
+        NotificationsProperty.Notification notification = property.getChannels().get("sms");
+
+        return !notification.getDayWeek().equalsIgnoreCase("") &&
+                !notification.getDayFormat().equalsIgnoreCase("");
+    }
+
+    @Override
+    public void filterAndSendNotification(){
+        NotificationsProperty.Notification notification = property.getChannels().get("sms");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
+
+        if(notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()))){
+            sendNotification();
+        }
     }
 
 }

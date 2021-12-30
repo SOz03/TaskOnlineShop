@@ -14,7 +14,6 @@ public class SendHandler {
     private final NotificationsProperty property;
     private final Map<String, Sender> mapAllSender;
 
-
     @Scheduled(cron = "${application.notifications.time}")
     private void handlerAllSenders() {
 
@@ -23,6 +22,12 @@ public class SendHandler {
                 .stream()
                 .filter(channel -> channel.getValue().isEnabled())
                 .map(channel -> mapAllSender.get(channel.getKey().toLowerCase()))
-                .forEach(Sender::sendNotification);
+                .forEach(sender -> {
+                    if(sender.checkingDateFilterActivity()){
+                        sender.filterAndSendNotification();
+                    } else {
+                        sender.sendNotification();
+                    }
+                });
     }
 }
