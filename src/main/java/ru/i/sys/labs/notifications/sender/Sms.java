@@ -33,8 +33,12 @@ public class Sms implements Sender {
     public boolean checkingDateFilterActivity() {
         NotificationsProperty.Notification notification = property.getChannels().get("sms");
 
-        return !notification.getDayWeek().equalsIgnoreCase("") &&
-                !notification.getDayFormat().equalsIgnoreCase("");
+        if(!notification.getDayWeek().equalsIgnoreCase("") &&
+                !notification.getDayFormat().equalsIgnoreCase("")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

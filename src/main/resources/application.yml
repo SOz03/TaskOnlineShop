@@ -37,6 +37,7 @@ application:
 
   notifications:
     time: 0 * * ? * *
+    time-day-format: 0/30 * * ? * *
     channels:
       vk:
         enabled: true
@@ -46,8 +47,8 @@ application:
         description: message vk
       mail:
         enabled: true
-        day-format: EEEE dd MM yyyy
-        dayWeek: monday 20 12 2022
+        day-format: dd MM yyyy
+        dayWeek: 30 12 2021
         name: message
         description: message mail
       sms:

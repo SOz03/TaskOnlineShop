@@ -31,15 +31,19 @@ public class Mail implements Sender {
 
     @Override
     public boolean checkingDateFilterActivity() {
-        NotificationsProperty.Notification notification = property.getChannels().get("vk");
+        NotificationsProperty.Notification notification = property.getChannels().get("mail");
 
-        return !notification.getDayWeek().equalsIgnoreCase("") &&
-                !notification.getDayFormat().equalsIgnoreCase("");
+        if(notification.getDayWeek().equalsIgnoreCase("") ||
+                notification.getDayFormat().equalsIgnoreCase("")){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
     public void filterAndSendNotification(){
-        NotificationsProperty.Notification notification = property.getChannels().get("vk");
+        NotificationsProperty.Notification notification = property.getChannels().get("mail");
         SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
 
         if(notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()))){
