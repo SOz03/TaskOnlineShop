@@ -15,13 +15,11 @@ import java.util.Locale;
 public class Sms implements Sender {
 
     private final NotificationsProperty property;
+    private NotificationsProperty.Notification notification;
 
     @Override
     public void sendNotification() {
-        NotificationsProperty.Notification notification = property
-                .getChannels()
-                .get("sms");
-
+        notification = property.getChannels().get("sms");
         if (notification == null) {
             log.warn("Notification Sms equals null");
         } else {
@@ -30,25 +28,20 @@ public class Sms implements Sender {
     }
 
     @Override
-    public boolean checkingDateFilterActivity() {
-        NotificationsProperty.Notification notification = property.getChannels().get("sms");
-
-        if(!notification.getDayWeek().equalsIgnoreCase("") &&
-                !notification.getDayFormat().equalsIgnoreCase("")){
+    public boolean filteringNotification() {
+        notification = property.getChannels().get("sms");
+        if(!notification.getDayWeek().equalsIgnoreCase("") ){
+            if(!notification.getDayFormat().equalsIgnoreCase("")) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
+                return notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()));
+            } else {
+                log.warn("Sms date format is empty");
+            }
+        } else if(notification.getDayFormat().equalsIgnoreCase("")){
             return true;
         } else {
-            return false;
+            log.warn("Sms day week is empty");
         }
+        return false;
     }
-
-    @Override
-    public void filterAndSendNotification(){
-        NotificationsProperty.Notification notification = property.getChannels().get("sms");
-        SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
-
-        if(notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()))){
-            sendNotification();
-        }
-    }
-
 }

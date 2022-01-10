@@ -15,13 +15,11 @@ import java.util.Locale;
 public class Vk implements Sender {
 
     private final NotificationsProperty property;
+    private NotificationsProperty.Notification notification;
 
     @Override
     public void sendNotification() {
-        NotificationsProperty.Notification notification = property
-                .getChannels()
-                .get("vk");
-
+        notification = property.getChannels().get("vk");
         if (notification == null) {
             log.warn("Notification Vk equals null");
         } else {
@@ -30,20 +28,20 @@ public class Vk implements Sender {
     }
 
     @Override
-    public boolean checkingDateFilterActivity() {
-        NotificationsProperty.Notification notification = property.getChannels().get("vk");
-
-        return !notification.getDayWeek().equalsIgnoreCase("") &&
-                !notification.getDayFormat().equalsIgnoreCase("");
-    }
-
-    @Override
-    public void filterAndSendNotification(){
-        NotificationsProperty.Notification notification = property.getChannels().get("vk");
-        SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
-
-        if(notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()))){
-            sendNotification();
+    public boolean filteringNotification() {
+        notification = property.getChannels().get("vk");
+        if(!notification.getDayWeek().equalsIgnoreCase("") ){
+            if(!notification.getDayFormat().equalsIgnoreCase("")) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(notification.getDayFormat(), Locale.ENGLISH);
+                return notification.getDayWeek().equalsIgnoreCase(dateFormat.format(new Date()));
+            } else {
+                log.warn("Vk date format is empty");
+            }
+        } else if(notification.getDayFormat().equalsIgnoreCase("")){
+            return true;
+        } else {
+            log.warn("Vk day week is empty");
         }
+        return false;
     }
 }

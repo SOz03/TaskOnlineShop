@@ -6,7 +6,7 @@ spring:
     open-in-view: false
 
   datasource: #localhost:5433
-    url: jdbc:postgresql://localhost:5432/shop_db?currentSchema=shop
+    url: jdbc:postgresql://localhost:5433/shop_db?currentSchema=shop
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 080801
@@ -37,23 +37,22 @@ application:
 
   notifications:
     time: 0 * * ? * *
-    time-day-format: 0/30 * * ? * *
     channels:
       vk:
         enabled: true
-        day-format: EEEE dd MM yyyy
-        dayWeek: monday 20 12 2021
+        day-format: EEEE dd MM yyyy HH:mm
+        dayWeek: monday 10 01 2022 11:30
         name: MESSAGE
         description: message vk
       mail:
         enabled: true
-        day-format: dd MM yyyy
-        dayWeek: 30 12 2021
+        day-format: EEEE
+        dayWeek: monday
         name: message
         description: message mail
       sms:
         enabled: true
-        day-format: EEEE dd MM yyyy
+        day-format:
         dayWeek:
         name: Happy Birthday!!!
         description: Happy Birthday, Ivan Popov!

@@ -4,7 +4,5 @@ public interface Sender {
 
     void sendNotification();
 
-    void filterAndSendNotification();
-
-    boolean checkingDateFilterActivity();
+    boolean filteringNotification();
 }

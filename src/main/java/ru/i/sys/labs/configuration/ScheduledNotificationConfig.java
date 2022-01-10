@@ -26,7 +26,6 @@ public class ScheduledNotificationConfig {
 
     @Bean
     public Map<String, Sender> MapAllSender() {
-
         Map<String, Sender> mapLinksSenders = new HashMap<>();
         if (listAllSenders.isEmpty()) {
             log.warn("List Senders is empty");
